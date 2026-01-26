@@ -36,6 +36,10 @@ QUESTIONS = [
     [
         "https://data.un.org/Data.aspx?d=POP&f=tableCode:29&c=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18&s=_countryEnglishNameOrderBy:asc,refYear:desc,areaCode:asc&v=",
         "r_un_attendance.csv"
+    ],
+    [
+        "https://data.un.org/Data.aspx?d=POP&f=tableCode%3a31&c=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18&s=_countryEnglishNameOrderBy:asc,refYear:desc,areaCode:asc&v=",
+        "p_un_literacy.csv"
     ]
 ]
 HEADERS = {
