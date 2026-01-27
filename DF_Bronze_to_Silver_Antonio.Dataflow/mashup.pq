@@ -1,0 +1,104 @@
+[StagingDefinition = [Kind = "FastCopy"]]
+section Section1;
+shared #"Renewable Energy Score" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "r_wb_energy", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"FREQ", "FREQ_LABEL", "INDICATOR", "OBS_CONF_LABEL", "OBS_CONF", "OBS_STATUS_LABEL", "OBS_STATUS", "UNIT_MULT_LABEL", "UNIT_MULT", "DATABASE_ID_LABEL", "DATABASE_ID", "UNIT_MEASURE_LABEL", "UNIT_MEASURE", "INDICATOR_LABEL"}),
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Attribute", "Value"),
+  #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"Attribute", "Year"}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Year", Int64.Type}}),
+  #"Renamed columns 1" = Table.RenameColumns(#"Changed column type", {{"Year", "YEAR"}, {"Value", "VALUE"}})
+in
+  #"Renamed columns 1";
+shared #"GNI per capita" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "r_wb_gni", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"OBS_CONF_LABEL", "OBS_CONF", "OBS_STATUS_LABEL", "OBS_STATUS", "DATA_SOURCE_LABEL", "DATA_SOURCE", "UNIT_MULT_LABEL", "UNIT_MULT", "DATABASE_ID_LABEL", "DATABASE_ID", "DECIMALS_LABEL", "DECIMALS", "AGG_METHOD_LABEL", "AGG_METHOD", "UNIT_MEASURE_LABEL", "UNIT_MEASURE", "INDICATOR_LABEL", "INDICATOR", "FREQ", "FREQ_LABEL"}),
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Attribute", "Value"),
+  #"Changed column type" = Table.TransformColumnTypes(#"Unpivoted other columns", {{"Attribute", Int64.Type}}),
+  #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Attribute", "YEAR"}, {"Value", "VALUE"}})
+in
+  #"Renamed columns";
+shared #"Life Expectancy After Birth" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "r_wb_lifeexpectancy", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"OBS_CONF_LABEL", "OBS_STATUS_LABEL", "UNIT_MULT_LABEL", "TIME_FORMAT_LABEL", "DATABASE_ID_LABEL", "DECIMALS_LABEL", "UNIT_TYPE_LABEL", "AGG_METHOD_LABEL", "COMP_BREAKDOWN_3_LABEL", "COMP_BREAKDOWN_2_LABEL", "COMP_BREAKDOWN_1_LABEL", "UNIT_MEASURE_LABEL", "URBANISATION_LABEL", "AGE_LABEL", "SEX_LABEL", "INDICATOR_LABEL", "FREQ_LABEL", "OBS_STATUS", "OBS_CONF", "DATA_SOURCE", "UNIT_MULT", "COMMENT_TS", "TIME_FORMAT", "DATABASE_ID", "DECIMALS", "UNIT_TYPE", "AGG_METHOD", "COMP_BREAKDOWN_3", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_1", "UNIT_MEASURE", "URBANISATION", "AGE", "SEX", "INDICATOR", "FREQ", "ACTION", "STRUCTURE_ID", "STRUCTURE"}),
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA_LABEL", "REF_AREA"}, "Attribute", "Value"),
+  #"Changed column type" = Table.TransformColumnTypes(#"Unpivoted other columns", {{"Attribute", Int64.Type}}),
+  #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Attribute", "YEAR"}, {"Value", "VALUE"}})
+in
+  #"Renamed columns";
+shared #"Public Education Spending" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "s_wb_education", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"OBS_CONF_LABEL", "OBS_CONF", "OBS_STATUS_LABEL", "OBS_STATUS", "UNIT_MULT_LABEL", "UNIT_MULT", "DATABASE_ID_LABEL", "DATABASE_ID", "UNIT_MEASURE_LABEL", "UNIT_MEASURE", "INDICATOR_LABEL", "INDICATOR", "FREQ_LABEL", "FREQ"}),
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Attribute", "Value"),
+  #"Changed column type" = Table.TransformColumnTypes(#"Unpivoted other columns", {{"Attribute", Int64.Type}}),
+  #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Attribute", "YEAR"}, {"Value", "VALUE"}})
+in
+  #"Renamed columns";
+shared #"Public Health Spending" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "s_wb_health", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"OBS_CONF_LABEL", "OBS_STATUS_LABEL", "UNIT_MULT_LABEL", "TIME_FORMAT_LABEL", "DATABASE_ID_LABEL", "DECIMALS_LABEL", "UNIT_TYPE_LABEL", "AGG_METHOD_LABEL", "COMP_BREAKDOWN_3_LABEL", "COMP_BREAKDOWN_2_LABEL", "COMP_BREAKDOWN_1_LABEL", "UNIT_MEASURE_LABEL", "URBANISATION_LABEL", "AGE_LABEL", "SEX_LABEL", "INDICATOR_LABEL", "FREQ_LABEL", "OBS_STATUS", "OBS_CONF", "DATA_SOURCE", "UNIT_MULT", "COMMENT_TS", "TIME_FORMAT", "DATABASE_ID", "DECIMALS", "UNIT_TYPE", "AGG_METHOD", "COMP_BREAKDOWN_3", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_1", "UNIT_MEASURE", "URBANISATION", "AGE", "SEX", "INDICATOR", "FREQ", "ACTION", "STRUCTURE_ID", "STRUCTURE"}),
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Attribute", "Value"),
+  #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"Attribute", "YEAR"}, {"Value", "VALUE"}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"YEAR", Int64.Type}})
+in
+  #"Changed column type";
+shared #"Research and Development Spending" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "s_wb_research", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "COMP_BREAKDOWN_3_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Attribute", "Value"),
+  #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"Attribute", "YEAR"}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"YEAR", Int64.Type}}),
+  #"Renamed columns 1" = Table.RenameColumns(#"Changed column type", {{"Value", "VALUE"}})
+in
+  #"Renamed columns 1";
+shared #"GDP Social Protection Spending" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "s_wb_social", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"FREQ", "FREQ_LABEL", "INDICATOR", "UNIT_MEASURE", "UNIT_MEASURE_LABEL", "TYPE", "TYPE_LABEL", "DATABASE_ID", "DATABASE_ID_LABEL", "UNIT_MULT", "UNIT_MULT_LABEL", "OBS_STATUS", "OBS_STATUS_LABEL", "OBS_CONF", "OBS_CONF_LABEL"}),
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"INDICATOR_LABEL", "REF_AREA_LABEL", "REF_AREA"}, "Attribute", "Value"),
+  #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"Attribute", "YEAR"}, {"Value", "VALUE"}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"YEAR", Int64.Type}}),
+  #"Removed columns 1" = Table.RemoveColumns(#"Changed column type", {"INDICATOR_LABEL"})
+in
+  #"Removed columns 1";
+[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Countries_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
+shared Countries = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "Files", ItemKind = "Folder"]}[Data],
+  #"Navigation 3" = #"Navigation 2"{[Name = "countries.csv"]}[Content],
+  #"Imported CSV" = Csv.Document(#"Navigation 3", [Delimiter = ",", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+  #"Removed columns" = Table.RemoveColumns(#"Imported CSV", {"Column4"}),
+  #"Promoted headers" = Table.PromoteHeaders(#"Removed columns", [PromoteAllScalars = true]),
+  #"Renamed columns" = Table.RenameColumns(#"Promoted headers", {{"country_code", "COUNTRY_CODE"}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"COUNTRY_CODE", type text}, {"ref_area", Int64.Type}, {"country_name", type text}}),
+  #"Renamed columns 1" = Table.RenameColumns(#"Changed column type", {{"ref_area", "REF"}, {"country_name", "COUNTRY_NAME"}})
+in
+  #"Renamed columns 1";
+shared Countries_DataDestination = let
+  Pattern = Lakehouse.Contents([HierarchicalNavigation = null, CreateNavigationProperties = false, EnableFolding = false]),
+  Navigation_1 = Pattern{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
+  Navigation_2 = Navigation_1{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  TableNavigation = Navigation_2{[Id = "Countries", ItemKind = "Table"]}?[Data]?
+in
+  TableNavigation;

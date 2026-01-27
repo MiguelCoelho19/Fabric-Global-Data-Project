@@ -1,0 +1,55 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "DF_Antonio",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Renewable Energy Score": {
+      "queryId": "9e995349-0cbf-4bbd-ae62-e63b29d4e7ec",
+      "queryName": "Renewable Energy Score"
+    },
+    "GNI per capita": {
+      "queryId": "158a22b8-694f-4588-8bf8-c0d9bca349b8",
+      "queryName": "GNI per capita"
+    },
+    "Life Expectancy After Birth": {
+      "queryId": "19a853f5-5459-4d8b-bc08-a14b23653b47",
+      "queryName": "Life Expectancy After Birth"
+    },
+    "Public Education Spending": {
+      "queryId": "ad93b086-691f-4608-8a1f-f3564af80e9a",
+      "queryName": "Public Education Spending"
+    },
+    "Public Health Spending": {
+      "queryId": "e71d4bf5-bed3-4563-8712-9a7134b09328",
+      "queryName": "Public Health Spending"
+    },
+    "Research and Development Spending": {
+      "queryId": "d4c03642-4e51-4e68-b48c-1379940fcda4",
+      "queryName": "Research and Development Spending"
+    },
+    "GDP Social Protection Spending": {
+      "queryId": "03e92b67-4183-4c96-9adc-b78219a19b7d",
+      "queryName": "GDP Social Protection Spending"
+    },
+    "Countries": {
+      "queryId": "1fc03e6a-58a1-47a9-bf40-c2fb8ec144b9",
+      "queryName": "Countries",
+      "loadEnabled": false
+    },
+    "Countries_DataDestination": {
+      "queryId": "0934aa70-42f4-4987-b2a7-daf18dab450c",
+      "queryName": "Countries_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"2bf3a0af-3091-4696-a883-e76d8f3dbf69\",\"DatasourceId\":\"03ecf776-2f67-4631-9df7-db6fd140711f\"}"
+    }
+  ]
+}
