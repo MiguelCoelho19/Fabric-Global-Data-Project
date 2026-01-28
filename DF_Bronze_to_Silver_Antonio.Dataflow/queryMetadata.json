@@ -7,31 +7,38 @@
   "queriesMetadata": {
     "Renewable Energy Score": {
       "queryId": "9e995349-0cbf-4bbd-ae62-e63b29d4e7ec",
-      "queryName": "Renewable Energy Score"
+      "queryName": "Renewable Energy Score",
+      "loadEnabled": false
     },
     "GNI per capita": {
       "queryId": "158a22b8-694f-4588-8bf8-c0d9bca349b8",
-      "queryName": "GNI per capita"
+      "queryName": "GNI per capita",
+      "loadEnabled": false
     },
     "Life Expectancy After Birth": {
       "queryId": "19a853f5-5459-4d8b-bc08-a14b23653b47",
-      "queryName": "Life Expectancy After Birth"
+      "queryName": "Life Expectancy After Birth",
+      "loadEnabled": false
     },
     "Public Education Spending": {
       "queryId": "ad93b086-691f-4608-8a1f-f3564af80e9a",
-      "queryName": "Public Education Spending"
+      "queryName": "Public Education Spending",
+      "loadEnabled": false
     },
     "Public Health Spending": {
       "queryId": "e71d4bf5-bed3-4563-8712-9a7134b09328",
-      "queryName": "Public Health Spending"
+      "queryName": "Public Health Spending",
+      "loadEnabled": false
     },
     "Research and Development Spending": {
       "queryId": "d4c03642-4e51-4e68-b48c-1379940fcda4",
-      "queryName": "Research and Development Spending"
+      "queryName": "Research and Development Spending",
+      "loadEnabled": false
     },
     "GDP Social Protection Spending": {
       "queryId": "03e92b67-4183-4c96-9adc-b78219a19b7d",
-      "queryName": "GDP Social Protection Spending"
+      "queryName": "GDP Social Protection Spending",
+      "loadEnabled": false
     },
     "Countries": {
       "queryId": "1fc03e6a-58a1-47a9-bf40-c2fb8ec144b9",
@@ -39,8 +46,14 @@
       "loadEnabled": false
     },
     "Countries_DataDestination": {
-      "queryId": "0934aa70-42f4-4987-b2a7-daf18dab450c",
+      "queryId": "8ec630b9-504d-4cc3-b1b7-b13abb5407d2",
       "queryName": "Countries_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DefaultDestination": {
+      "queryId": "8c1f9d93-d7ba-4a23-a19f-c203fdbb8807",
+      "queryName": "DefaultDestination",
       "isHidden": true,
       "loadEnabled": false
     }
