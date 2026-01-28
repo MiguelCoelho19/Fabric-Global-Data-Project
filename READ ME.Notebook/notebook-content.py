@@ -11,7 +11,44 @@
 
 # MARKDOWN ********************
 
-# **1. Correlações Atualizadas (Incluindo NEW)**
+# 
+
+
+# MARKDOWN ********************
+
+# ### 1. Contexto
+
+
+# MARKDOWN ********************
+
+# ### 2. Fontes de dados
+# 
+# <img src="https://data.un.org/_Images/Logo.png" width="300"/>
+# 
+# - Population by type of living quarters, age and sex
+# - Population by literacy, age, sex and urban/rural residence
+# - School attendance
+# 
+# <img src="https://pbs.twimg.com/profile_images/1831702419744460800/ghgvfq33_400x400.jpg" width="300"/>
+# 
+# - Population living in slums
+# - Prevalence of moderate or severe food insecurity in the population (%)
+# - Poverty headcount ratio
+# - People using safely managed sanitation services (% of population) (NEW)
+# -  Consumer Price Indices (NEW)
+# - Government expenditure on education
+# - Social protection spending
+# - Research and development expenditure
+# - Government expenditure on Health (NEW)
+# - GNI per capita, PPP
+# - Sustainable Energy
+# - Life expectancy at birth, total (years) (NEW)
+# 
+
+
+# MARKDOWN ********************
+
+# ### 3. Correlações
 # 
 # Problema (P), Solução (S) e Resultado (R):
 # 
@@ -27,7 +64,7 @@
 # 
 # - P-R (Educação e Moradia): Correlação entre Population in slums e Literacy rates. (O ambiente urbano precário trava o desenvolvimento cognitivo/educacional?).
 # 
-# **2. Questões para a Análise**
+# ### 4. Questões para a Análise
 # 
 # **Bloco A:** O Ciclo da Pobreza (O Problema)
 # - A inflação é o maior motor da fome? Como as variações no CPI (Preços) afetaram a Insegurança Alimentar em comparação com o Poverty Ratio?
@@ -53,81 +90,193 @@
 
 # MARKDOWN ********************
 
-# ### Fontes de dados
-# Problema
-# - Population living in slums
-# 	- https://data360.worldbank.org/en/indicator/WB_WDI_EN_POP_SLUM_UR_ZS
-# 	- 2000 - 2022
-# 	- p_wb_slums.csv
-# - Prevalence of moderate or severe food insecurity in the population (%)
-# 	- https://data360.worldbank.org/en/indicator/WB_WDI_SN_ITK_MSFI_ZS
-# 	- 2015 - 2022
-# 	- p_wb_food.csv
-# - Poverty headcount ratio
-# 	- https://data360.worldbank.org/en/indicator/WB_WDI_SI_POV_MPWB
-# 	- 2008 - 2024
-# 	- p_wb_ratio.csv
-# - Population by type of living quarters, age and sex
-# 	- https://data.un.org/Data.aspx?d=POP&f=tableCode:46
-# 	- 1995 - 2023
-# 	- p_un_quarters.csv
-# - Population by literacy, age, sex and urban/rural residence (NEW)
-# 	- https://data.un.org/Data.aspx?d=POP&f=tableCode:31
-# 	- 1995 - 2023
-# 	- p_un_literacy.csv
-# - People using safely managed sanitation services (% of population) (NEW)
-# 	- https://data360.worldbank.org/en/indicator/WB_WDI_SH_STA_SMSS_ZS
-# 	- 2000 - 2024
-# 	- p_wb_sanitation.csv
-# -  Consumer Price Indices (NEW)
-# 	- https://data360.worldbank.org/en/dataset/FAO_CP
-# 	- 2000 - 2025
-# 	- p_wb_price_indices.csv
+# ### Abordagem ou Estrutura
+
+# MARKDOWN ********************
+
+# <table>
+# <tr>
+# <th>Categoria</th>
+# <th>Indicador</th>
+# <th>Link</th>
+# <th>Período</th>
+# <th>Arquivo</th>
+# </tr>
 # 
-# Solução
-# - Government expenditure on education
-# 	- https://data360.worldbank.org/en/indicator/WB_EDSTATS_UIS_X_PPP_FSGOV
-# 	- 1990 - 2024
-# 	- s_wb_education.csv
-# - Social protection spending
-# 	- https://data360.worldbank.org/en/indicator/WEF_TTDI_SOCPROTECTOGDP
-# 	- 2019 - 2024
-# 	- s_wb_social.csv
-# - Research and development expenditure
-# 	- https://data360.worldbank.org/en/indicator/WB_WDI_GB_XPD_RSDV_GD_ZS
-# 	- 1996 - 2023
-# 	- s_wb_research.csv
-# - Government expenditure on Health (NEW)
-# 	- https://data360.worldbank.org/en/indicator/WB_WDI_SH_XPD_GHED_PC_CD
-# 	- 2000-2023
-# 	- s_wb_health.csv
+# <tr style="background-color:#f2f2f2;">
+# <td>Problema</td>
+# <td><mark>Population living in slums</mark></td>
+# <td>https://data360.worldbank.org/en/indicator/WB_WDI_EN_POP_SLUM_UR_ZS</td>
+# <td>2000–2022</td>
+# <td>p_wb_slums.csv</td>
+# </tr>
 # 
-# Resultado
-# - GNI per capita, PPP
-# 	- https://data360.worldbank.org/en/indicator/WB_WDI_NY_GNP_PCAP_PP_CD
-# 	- 1990 - 2024
-# 	- r_wb_gni.csv
-# - School attendance
-# 	- https://data.un.org/Data.aspx?d=POP&f=tableCode%3a29
-# 	- 1995 - 2023
-# 	- r_un_attendance.csv
-# - Sustainable Energy
-# 	- https://data360.worldbank.org/en/indicator/WB_RISE_RE_ALL
-# 	- 2010 - 2023
-# 	- r_wb_energy.csv
-# - Life expectancy at birth, total (years) (NEW)
-# 	- https://data360.worldbank.org/en/indicator/WB_WDI_SP_DYN_LE00_IN
-# 	- 1960 - 2023
-# 	- r_wb_lifeExpectancy.csv
+# <tr style="background-color:#f2f2f2;">
+# <td>Problema</td>
+# <td>Prevalence of moderate or severe food insecurity in the population (%)</td>
+# <td>https://data360.worldbank.org/en/indicator/WB_WDI_SN_ITK_MSFI_ZS</td>
+# <td>2015–2022</td>
+# <td>p_wb_food.csv</td>
+# </tr>
 # 
+# <tr style="background-color:#f2f2f2;">
+# <td>Problema</td>
+# <td><mark>Poverty headcount ratio</mark></td>
+# <td>https://data360.worldbank.org/en/indicator/WB_WDI_SI_POV_MPWB</td>
+# <td>2008–2024</td>
+# <td>p_wb_ratio.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#f2f2f2;">
+# <td>Problema</td>
+# <td>Population by type of living quarters, age and sex</td>
+# <td>https://data.un.org/Data.aspx?d=POP&f=tableCode:46</td>
+# <td>1995–2023</td>
+# <td>p_un_quarters.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#f2f2f2;">
+# <td>Problema</td>
+# <td>Population by literacy, age, sex and urban/rural residence (NEW)</td>
+# <td>https://data.un.org/Data.aspx?d=POP&f=tableCode:31</td>
+# <td>1995–2023</td>
+# <td>p_un_literacy.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#f2f2f2;">
+# <td>Problema</td>
+# <td>People using safely managed sanitation services (% of population) (NEW)</td>
+# <td>https://data360.worldbank.org/en/indicator/WB_WDI_SH_STA_SMSS_ZS</td>
+# <td>2000–2024</td>
+# <td>p_wb_sanitation.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#f2f2f2;">
+# <td>Problema</td>
+# <td>Consumer Price Indices (NEW)</td>
+# <td>https://data360.worldbank.org/en/dataset/FAO_CP</td>
+# <td>2000–2025 (best: 2001–2021)</td>
+# <td>p_wb_price_indices.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#dbe9ff;">
+# <td>Solução</td>
+# <td>Government expenditure on education</td>
+# <td>https://data360.worldbank.org/en/indicator/WB_EDSTATS_UIS_X_PPP_FSGOV</td>
+# <td>1990–2024</td>
+# <td>s_wb_education.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#dbe9ff;">
+# <td>Solução</td>
+# <td>Social protection spending</td>
+# <td>https://data360.worldbank.org/en/indicator/WEF_TTDI_SOCPROTECTOGDP</td>
+# <td>2019–2024</td>
+# <td>s_wb_social.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#dbe9ff;">
+# <td>Solução</td>
+# <td>Research and development expenditure</td>
+# <td>https://data360.worldbank.org/en/indicator/WB_WDI_GB_XPD_RSDV_GD_ZS</td>
+# <td>1996–2023</td>
+# <td>s_wb_research.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#dbe9ff;">
+# <td>Solução</td>
+# <td>Government expenditure on Health (NEW)</td>
+# <td>https://data360.worldbank.org/en/indicator/WB_WDI_SH_XPD_GHED_PC_CD</td>
+# <td>2000–2023</td>
+# <td>s_wb_health.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#dff5e1;">
+# <td>Resultado</td>
+# <td>GNI per capita, PPP</td>
+# <td>https://data360.worldbank.org/en/indicator/WB_WDI_NY_GNP_PCAP_PP_CD</td>
+# <td>1990–2024</td>
+# <td>r_wb_gni.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#dff5e1;">
+# <td>Resultado</td>
+# <td>School attendance</td>
+# <td>https://data.un.org/Data.aspx?d=POP&f=tableCode:29</td>
+# <td>1995–2023</td>
+# <td>r_un_attendance.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#dff5e1;">
+# <td>Resultado</td>
+# <td>Sustainable Energy</td>
+# <td>https://data360.worldbank.org/en/indicator/WB_RISE_RE_ALL</td>
+# <td>2010–2023</td>
+# <td>r_wb_energy.csv</td>
+# </tr>
+# 
+# <tr style="background-color:#dff5e1;">
+# <td>Resultado</td>
+# <td>Life expectancy at birth, total (years) (NEW)</td>
+# <td>https://data360.worldbank.org/en/indicator/WB_WDI_SP_DYN_LE00_IN</td>
+# <td>1960–2023</td>
+# <td>r_wb_lifeExpectancy.csv</td>
+# </tr>
+# 
+# </table>
 
 
-# CELL ********************
+# MARKDOWN ********************
+
+# ### 4. Medalhões
+# - **Bronze:** obtensão de dados estruturados nas fontes por download e por web scrapping (csv)
+# - **Silver:** validação , limpeza, normalização e enriquecimento dos dados
+# - **Gold:**
+
+# MARKDOWN ********************
+
+# ### 4.1. Transformação de Dados (ETL): Bronze para Silver
+# 
+# O processo de transformação visa elevar a qualidade dos dados, garantindo que a camada Silver contenha dados limpos, tipados e prontos para análise:
+# 
+# #### - Limpeza e Padronização (Data Cleansing)
+# - **Tratamento de Nulos:** Substituição de valores nulos por zero para evitar erros em operações matemáticas e aplicação de filtros para remover registros incompletos.
+# 
+# - **Tipagem Estrita:** Conversão de tipos de dados (strings para numéricos/percentuais) para garantir a integridade dos cálculos.
+# 
+# - **Filtragem de Escopo:** Aplicação de critérios específicos para isolar subconjuntos de dados relevantes e remoção de entradas inválidas que não constam nas listas de referência.
+# 
+# - **Normalização de Valores:** Re-escala de valores (ex: divisão por 100) para converter números brutos em formatos decimais e percentuais padronizados.
+# 
+# #### - Reestruturação de Esquema (Schema Design)
+# - **Pivot & Unpivot:** Manipulação da estrutura das tabelas para converter formatos Wide em Long (e vice-versa), garantindo que os anos e atributos sejam tratados como dimensões e métricas.
+# 
+# - **Agregação Temporal:** Cálculo de médias anuais a partir de dados mensais (janela de 2000 a 2025), consolidando 12 colunas mensais em uma única métrica anual.
+# 
+# - **Cálculos Customizados:** Criação de colunas calculadas, como totais por soma de múltiplos campos e razões percentuais entre colunas.
+# 
+# #### - Enriquecimento e Integração
+# - **Lookup & Join:** Integração com fontes externas (arquivos CSV de referência) para associar códigos de área a nomes de países e etiquetas descritivas.
+# 
+# - **Expansão de Metadados:** Inclusão de códigos de referência e nomes padronizados para aumentar o contexto analítico do dado.
+# 
+# - **Consolidação de Idades:** Resumo e agrupamento de diferentes faixas etárias para simplificar a análise demográfica.
+# 
+# #### - Otimização e Refino (Data Pruning)
+# - **Seleção de Colunas:** Remoção de metadados técnicos, etiquetas redundantes (FREQ, STATUS, UNIT) e colunas auxiliares de join.
+# 
+# - **Redução de Footprint:** Eliminação massiva de colunas originais (ex: centenas de colunas mensais) após a geração das médias anuais para reduzir o peso do modelo.
+# 
+# - **Renomeação Semântica:** Padronização final dos nomes das colunas (ex: YEAR, VALUE, COUNTRY_NAME) para garantir consistência e facilidade de uso no Power BI/Databricks.
 
 
-# METADATA ********************
+# MARKDOWN ********************
 
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
+# ### 4.2. Transformação de Dados (ETL): Silver para Gold
+
+# MARKDOWN ********************
+
+# ### 5. Desafios
+
+# MARKDOWN ********************
+
