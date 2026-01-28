@@ -1,0 +1,84 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "DF_Miguel",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Population by Illiteracy": {
+      "queryId": "38baf53f-3bef-4945-8689-615b233d177d",
+      "queryName": "Population by Illiteracy",
+      "loadEnabled": false
+    },
+    "Population by Type of Living Quarters": {
+      "queryId": "e091d765-c9e5-4dad-8899-27063f64e483",
+      "queryName": "Population by Type of Living Quarters",
+      "loadEnabled": false
+    },
+    "Population by School Attendance": {
+      "queryId": "d4d2f9e2-5234-489a-9608-a97afe368090",
+      "queryName": "Population by School Attendance",
+      "loadEnabled": false
+    },
+    "Population with food insecurity": {
+      "queryId": "0f76bd78-9343-43fe-a21a-27e9fe1a71bc",
+      "queryName": "Population with food insecurity",
+      "loadEnabled": false
+    },
+    "Food price inflation": {
+      "queryId": "abda2287-e617-480d-9d5c-27be1a8b3726",
+      "queryName": "Food price inflation",
+      "loadEnabled": false
+    },
+    "Population in poverty": {
+      "queryId": "cd82b505-5c50-4b14-9409-465f99a73f22",
+      "queryName": "Population in poverty",
+      "loadEnabled": false
+    },
+    "Population using safely managed sanitation services": {
+      "queryId": "10b6ac70-51a5-4fed-9dc0-88d9048d904d",
+      "queryName": "Population using safely managed sanitation services",
+      "loadEnabled": false
+    },
+    "Population living in slums": {
+      "queryId": "11258876-d7f4-417a-b33f-ed90a6c842a7",
+      "queryName": "Population living in slums",
+      "loadEnabled": false
+    },
+    "countries csv": {
+      "queryId": "acf09403-8200-40c3-aed0-e773d7897cfe",
+      "queryName": "countries csv"
+    },
+    "Population by Illiteracy_DataDestination": {
+      "queryId": "507ce84a-88a5-4396-b0de-177210f9e0f7",
+      "queryName": "Population by Illiteracy_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Population by Type of Living Quarters_DataDestination": {
+      "queryId": "862494eb-814b-47c1-b164-c31581f27bb6",
+      "queryName": "Population by Type of Living Quarters_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "Population by School Attendance_DataDestination": {
+      "queryId": "abe1e864-f02f-47f0-ba87-1d912a0f3626",
+      "queryName": "Population by School Attendance_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "DefaultDestination": {
+      "queryId": "be7a69e0-e7b8-44d7-9246-733c3be023df",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"2bf3a0af-3091-4696-a883-e76d8f3dbf69\",\"DatasourceId\":\"65183c0a-9b97-48ea-8b4f-53f64f738a86\"}"
+    }
+  ]
+}
