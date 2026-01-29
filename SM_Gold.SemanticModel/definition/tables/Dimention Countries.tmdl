@@ -1,0 +1,33 @@
+table 'Dimention Countries'
+	lineageTag: de662c48-3c85-4a37-a443-80762467f521
+	sourceLineageTag: [dbo].[Dimention Countries]
+
+	column Country_Code
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b9ac4ab0-c4ee-4fe9-b423-2dc3b7917717
+		sourceLineageTag: Country_Code
+		summarizeBy: none
+		sourceColumn: Country_Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country_Name
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 67a4c638-cd52-411f-ad7b-62d69acd65da
+		sourceLineageTag: Country_Name
+		summarizeBy: none
+		sourceColumn: Country_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dimention Countries' = entity
+		mode: directLake
+		source
+			entityName: Dimention Countries
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

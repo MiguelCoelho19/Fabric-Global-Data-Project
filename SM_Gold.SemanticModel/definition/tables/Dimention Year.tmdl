@@ -1,0 +1,23 @@
+table 'Dimention Year'
+	lineageTag: ba644773-c51c-4266-9b6a-22d73e41e207
+	sourceLineageTag: [dbo].[Dimention Year]
+
+	column Year
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 47d93fa1-e051-4de9-b0bd-7135d384fb91
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Dimention Year' = entity
+		mode: directLake
+		source
+			entityName: Dimention Year
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
