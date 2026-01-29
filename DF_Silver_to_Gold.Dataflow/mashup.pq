@@ -222,9 +222,10 @@ shared #"Fact Country Data" = let
   #"Expanded Public Health Spending" = Table.ExpandTableColumn(#"Expanded Public Education Spending", "Public Health Spending", {"Public Health Spending"}, {"Public Health Spending"}),
   #"Expanded Renewable Energy Score" = Table.ExpandTableColumn(#"Expanded Public Health Spending", "Renewable Energy Score", {"Renewable Energy Score"}, {"Renewable Energy Score"}),
   #"Expanded Research and Development Spending" = Table.ExpandTableColumn(#"Expanded Renewable Energy Score", "Research and Development Spending", {"Research and Development Spending"}, {"Research and Development Spending"}),
-  #"Removed columns 14" = Table.RemoveColumns(#"Expanded Research and Development Spending", {"Id"})
+  #"Removed columns 14" = Table.RemoveColumns(#"Expanded Research and Development Spending", {"Id"}),
+  #"Changed column type 1" = Table.TransformColumnTypes(#"Removed columns 14", {{"Year", type text}})
 in
-  #"Removed columns 14";
+  #"Changed column type 1";
 shared DefaultDestination = Lakehouse.Contents([EnableFolding = false]){[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data]{[lakehouseId = "c94bf87a-9471-4610-9706-026accea4424"]}[Data];
 [BindToDefaultDestination = true]
 shared #"Dimention Year" = let
