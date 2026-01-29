@@ -6,7 +6,12 @@
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
 # META   },
-# META   "dependencies": {}
+# META   "dependencies": {
+# META     "lakehouse": {
+# META       "default_lakehouse_name": "",
+# META       "default_lakehouse_workspace_id": ""
+# META     }
+# META   }
 # META }
 
 # MARKDOWN ********************
@@ -16,34 +21,56 @@
 
 # MARKDOWN ********************
 
-# ### 1. Contexto
+# ## Data Engineering Mastering Project
+# 
+# ### Global Demographic & Economic Growth Dashboard
 
+# MARKDOWN ********************
+
+# ### 1. Contexto
+# 
+# O projeto "Data Engineering Mastering" foca-se na convergência entre demografia global e indicadores económicos. O objetivo central é transformar dados brutos provenientes de organizações internacionais em inteligência de negócio acionável, permitindo uma análise profunda das tendências que moldarão o cenário mundial em 2026.
+# 
+# ##### - Objetivos Estratégicos
+# O sucesso do projeto é medido através de quatro pilares fundamentais:
+# 
+# - **Exploração de Dados:** Investigar e compreender a fundo os datasets disponíveis.
+# 
+# - **Inteligência de Negócio:** Identificar perguntas críticas que gerem valor estratégico.
+#  
+# - **Visualização de Dados:** Construir relatórios no Power BI que ofereçam insights claros.
+#  
+# - **Colaboração:** Maximizar a eficiência do trabalho em equipa durante o ciclo de desenvolvimento.
 
 # MARKDOWN ********************
 
 # ### 2. Fontes de dados
 # 
+# Para garantir a robustez das análises, o projeto utiliza fontes de dados heterogéneas de prestígio global:
+# 
+# - **UN Census Data:** Dados demográficos detalhados da base de censos das Nações Unidas.
 # <img src="https://data.un.org/_Images/Logo.png" width="300"/>
 # 
-# - Population by type of living quarters, age and sex
-# - Population by literacy, age, sex and urban/rural residence
-# - School attendance
+#     - Population by type of living quarters, age and sex
+#     - Population by literacy, age, sex and urban/rural residence
+#     - School attendance
+#     
 # 
+# - **World Bank Global Development:** Indicadores económicos e de desenvolvimento do Portal de Dados do Banco Mundial.
 # <img src="https://pbs.twimg.com/profile_images/1831702419744460800/ghgvfq33_400x400.jpg" width="300"/>
 # 
-# - Population living in slums
-# - Prevalence of moderate or severe food insecurity in the population (%)
-# - Poverty headcount ratio
-# - People using safely managed sanitation services (% of population) (NEW)
-# -  Consumer Price Indices (NEW)
-# - Government expenditure on education
-# - Social protection spending
-# - Research and development expenditure
-# - Government expenditure on Health (NEW)
-# - GNI per capita, PPP
-# - Sustainable Energy
-# - Life expectancy at birth, total (years) (NEW)
-# 
+#     - Population living in slums
+#     - Population with food insecurity (%)
+#     - Poverty headcount ratio
+#     - People using safely managed sanitation services (% of population) (NEW)
+#     -  Consumer Price Indices (NEW)
+#     - Government expenditure on education
+#     - Social protection spending
+#     - Research and development expenditure
+#     - Government expenditure on Health (NEW)
+#     - GNI per capita, PPP
+#     - Sustainable Energy
+#     - Life expectancy at birth, total (years) (NEW)
 
 
 # MARKDOWN ********************
@@ -105,7 +132,7 @@
 # 
 # <tr style="background-color:#f2f2f2;">
 # <td>Problema</td>
-# <td><mark>Population living in slums</mark></td>
+# <td>Population living in slums (%)</td>
 # <td>https://data360.worldbank.org/en/indicator/WB_WDI_EN_POP_SLUM_UR_ZS</td>
 # <td>2000–2022</td>
 # <td>p_wb_slums.csv</td>
@@ -113,7 +140,7 @@
 # 
 # <tr style="background-color:#f2f2f2;">
 # <td>Problema</td>
-# <td>Prevalence of moderate or severe food insecurity in the population (%)</td>
+# <td>Population with food insecurity (%)</td>
 # <td>https://data360.worldbank.org/en/indicator/WB_WDI_SN_ITK_MSFI_ZS</td>
 # <td>2015–2022</td>
 # <td>p_wb_food.csv</td>
@@ -121,7 +148,7 @@
 # 
 # <tr style="background-color:#f2f2f2;">
 # <td>Problema</td>
-# <td><mark>Poverty headcount ratio</mark></td>
+# <td>Poverty headcount ratio</td>
 # <td>https://data360.worldbank.org/en/indicator/WB_WDI_SI_POV_MPWB</td>
 # <td>2008–2024</td>
 # <td>p_wb_ratio.csv</td>
@@ -229,9 +256,43 @@
 # MARKDOWN ********************
 
 # ### 4. Medalhões
-# - **Bronze:** obtensão de dados estruturados nas fontes por download e por web scrapping (csv)
-# - **Silver:** validação , limpeza, normalização e enriquecimento dos dados
-# - **Gold:**
+# A implementação segue a Arquitetura Medallion, garantindo a qualidade e a linhagem dos dados ao longo de três camadas:
+# 
+# 
+# 
+# ```text
+# ┌───────────────────────────────────────────────┐
+#  │ 🟤 BRONZE (RAW)                             │
+# │───────────────────────────────────────────────│
+# │ • Ingestão de dados no estado original        │
+# │ • Download de arquivos (CSV)                  │
+# │ • Web Scraping                                │
+# │ • Sem transformações                          │
+# └───────────────────────────────────────────────┘
+#                     │
+#                     ▼
+# ┌───────────────────────────────────────────────┐
+#  │ ⚪ SILVER (VALIDATED / CLEAN)               │
+# │───────────────────────────────────────────────│
+# │ • Validação dos dados                         │
+# │ • Limpeza (dados nulos, duplicados, erros)    │
+# │ • Normalização                                │
+# │ • Padronização de schemas                     │
+# └───────────────────────────────────────────────┘
+#                     │
+#                     ▼
+# ┌───────────────────────────────────────────────┐
+#  │ 🟡 GOLD (ENRICHED / CURATED)                │
+# │───────────────────────────────────────────────│
+# │ • Modelagem dimensional                       │
+# │ • Dados enriquecidos                          │
+# │ • Prontos para consumo analítico              │
+# │ • BI, Dashboards e Analytics                  │
+# └───────────────────────────────────────────────┘
+
+
+# MARKDOWN ********************
+
 
 # MARKDOWN ********************
 
@@ -276,7 +337,42 @@
 
 # MARKDOWN ********************
 
+# #### - Preparação e Limpeza
+# 
+# - **Fusão de tabelas:** Agruparam-se várias fontes numa só lista.
+# 
+# - **Redução de colunas:** Mantiveram-se apenas os identificadores essenciais.
+# 
+# - **Remoção de duplicados:** Eliminaram-se entradas repetidas.
+# 
+# - **Divisão de IDs:** Separaram-se os códigos de identificação em categorias (como país e ano).
+# 
+# #### - Cruzamento e Organização
+# 
+# - **Associação de métricas:** Recuperaram-se os dados de cada fonte com base na lista principal.
+# 
+# - **Simplificação de estrutura:** Transformaram-se dados complexos em colunas simples.
+# 
+# - **Ajuste de formatos:** Corrigiram-se os tipos de dados (texto e números) para análise.
+# 
+# #### - Refinação Final
+# 
+# - **Extração de texto:** Limparam-se colunas de texto, removendo informação desnecessária antes da vírgula.
+# 
+# - **Atualização de nomes:** Renomearam-se as colunas para títulos mais claros.
+# 
+# - **Ordenação:** Organizou-se a lista final por ordem crescente.
+
+# MARKDOWN ********************
+
 # ### 5. Desafios
+
+# MARKDOWN ********************
+
+# - Web scrapping nos dados da UN:  originalmente o site só libera um numero limitado de dados
+# - Dificuldade na distribuição de tarefas devido a limitações do Fabric e a linearidade do projeto
+# - Inconsistencia de alguns dados da UN, principalmente a sobreposição de dados referentes as idades
+# - Dificuldade de conexão de internet
 
 # MARKDOWN ********************
 
