@@ -80,6 +80,11 @@
       "queryName": "DefaultDestination",
       "isHidden": true,
       "loadEnabled": false
+    },
+    "Dimention Year": {
+      "queryId": "050c6a5e-38e2-4812-9463-1f32166ab459",
+      "queryName": "Dimention Year",
+      "loadEnabled": false
     }
   },
   "connections": [

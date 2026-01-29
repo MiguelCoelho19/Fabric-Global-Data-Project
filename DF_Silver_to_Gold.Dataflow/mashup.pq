@@ -226,3 +226,39 @@ shared #"Fact Country Data" = let
 in
   #"Removed columns 14";
 shared DefaultDestination = Lakehouse.Contents([EnableFolding = false]){[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data]{[lakehouseId = "c94bf87a-9471-4610-9706-026accea4424"]}[Data];
+[BindToDefaultDestination = true]
+shared #"Dimention Year" = let
+  Source = Table.Combine({#"Food price inflation", #"GNI per capita"}),
+  #"Removed columns" = Table.RemoveColumns(Source, {"Year", "Food price inflation", "country_code", "GNI per capita"}),
+  #"Appended query 12" = Table.Combine({#"Removed columns", #"GDP Social Protection Spending"}),
+  #"Removed columns 13" = Table.RemoveColumns(#"Appended query 12", {"country_code", "Year", "GDP Social Protection Spending"}),
+  #"Appended query" = Table.Combine({#"Removed columns 13", #"Life Expectancy After Birth"}),
+  #"Removed columns 1" = Table.RemoveColumns(#"Appended query", {"country_code", "Year", "Life Expectancy After Birth"}),
+  #"Appended query 1" = Table.Combine({#"Removed columns 1", #"Population by Illiteracy"}),
+  #"Removed columns 2" = Table.RemoveColumns(#"Appended query 1", {"Year", "Illiterate Population", "country_code"}),
+  #"Appended query 2" = Table.Combine({#"Removed columns 2", #"Population by School Attendance"}),
+  #"Removed columns 3" = Table.RemoveColumns(#"Appended query 2", {"Year", "Population Not attending school", "country_code"}),
+  #"Appended query 3" = Table.Combine({#"Removed columns 3", #"Population by Type of Living Quarters"}),
+  #"Removed columns 4" = Table.RemoveColumns(#"Appended query 3", {"Year", "Population living in Housing units", "Population living in Collective living quarters", "Population that are Roofless", "Population with Unknown housing", "country_code"}),
+  #"Appended query 4" = Table.Combine({#"Removed columns 4", #"Population in poverty"}),
+  #"Removed columns 5" = Table.RemoveColumns(#"Appended query 4", {"country_code", "Year", "Population in poverty"}),
+  #"Appended query 5" = Table.Combine({#"Removed columns 5", #"Population living in slums"}),
+  #"Removed columns 6" = Table.RemoveColumns(#"Appended query 5", {"country_code", "Year", "Population living in slums"}),
+  #"Appended query 6" = Table.Combine({#"Removed columns 6", #"Population using safely managed sanitation services"}),
+  #"Removed columns 7" = Table.RemoveColumns(#"Appended query 6", {"country_code", "Year", "Population using safely managed sanitation services"}),
+  #"Appended query 7" = Table.Combine({#"Removed columns 7", #"Population with food insecurity"}),
+  #"Removed columns 8" = Table.RemoveColumns(#"Appended query 7", {"country_code", "Year", "Population with food insecurity"}),
+  #"Appended query 8" = Table.Combine({#"Removed columns 8", #"Public Education Spending"}),
+  #"Removed columns 9" = Table.RemoveColumns(#"Appended query 8", {"Year", "country_code", "Public Education Spending"}),
+  #"Appended query 9" = Table.Combine({#"Removed columns 9", #"Public Health Spending"}),
+  #"Removed columns 10" = Table.RemoveColumns(#"Appended query 9", {"country_code", "Year", "Public Health Spending"}),
+  #"Appended query 10" = Table.Combine({#"Removed columns 10", #"Renewable Energy Score"}),
+  #"Removed columns 11" = Table.RemoveColumns(#"Appended query 10", {"country_code", "Year", "Renewable Energy Score"}),
+  #"Appended query 11" = Table.Combine({#"Removed columns 11", #"Research and Development Spending"}),
+  #"Removed columns 12" = Table.RemoveColumns(#"Appended query 11", {"country_code", "Year", "Research and Development Spending"}),
+  #"Extracted text after delimiter" = Table.TransformColumns(#"Removed columns 12", {{"Id", each Text.AfterDelimiter(_, ",", 0), type text}}),
+  #"Removed duplicates" = Table.Distinct(#"Extracted text after delimiter", {"Id"}),
+  #"Renamed columns" = Table.RenameColumns(#"Removed duplicates", {{"Id", "Year"}}),
+  #"Sorted rows" = Table.Sort(#"Renamed columns", {{"Year", Order.Ascending}})
+in
+  #"Sorted rows";
