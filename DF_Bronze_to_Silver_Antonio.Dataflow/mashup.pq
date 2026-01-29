@@ -100,16 +100,14 @@ shared #"GDP Social Protection Spending" = let
   Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
   #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "s_wb_social", ItemKind = "Table"]}[Data],
-  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"FREQ", "FREQ_LABEL", "INDICATOR", "UNIT_MEASURE", "UNIT_MEASURE_LABEL", "TYPE", "TYPE_LABEL", "DATABASE_ID", "DATABASE_ID_LABEL", "UNIT_MULT", "UNIT_MULT_LABEL", "OBS_STATUS", "OBS_STATUS_LABEL", "OBS_CONF", "OBS_CONF_LABEL"}),
-  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"INDICATOR_LABEL", "REF_AREA_LABEL", "REF_AREA"}, "Attribute", "Value"),
-  #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"Attribute", "YEAR"}, {"Value", "VALUE"}}),
-  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"YEAR", Int64.Type}}),
-  #"Removed columns 1" = Table.RemoveColumns(#"Changed column type", {"INDICATOR_LABEL", "REF_AREA_LABEL"}),
-  #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 1", {{"REF_AREA", "Ref_Area"}, {"YEAR", "Year"}, {"VALUE", "Value"}}),
-  #"Divided column" = Table.TransformColumns(#"Renamed columns 1", {{"Value", each _ / 100, type number}}),
-  #"Changed column type 1" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}})
+  #"Filtered rows" = Table.SelectRows(#"Navigation 2", each [TYPE_LABEL] = "Type: Value"),
+  #"Removed columns" = Table.RemoveColumns(#"Filtered rows", {"FREQ", "FREQ_LABEL", "INDICATOR", "INDICATOR_LABEL", "UNIT_MEASURE", "UNIT_MEASURE_LABEL", "TYPE", "TYPE_LABEL", "DATABASE_ID", "DATABASE_ID_LABEL", "UNIT_MULT", "UNIT_MULT_LABEL", "OBS_STATUS", "OBS_STATUS_LABEL", "OBS_CONF", "OBS_CONF_LABEL", "REF_AREA_LABEL"}),
+  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA"}, "Attribute", "Value"),
+  #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"REF_AREA", "Ref_Area"}, {"Attribute", "Year"}}),
+  #"Divided column" = Table.TransformColumns(#"Renamed columns", {{"Value", each _ / 100, type number}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}})
 in
-  #"Changed column type 1";
+  #"Changed column type";
 [DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Countries_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
 shared Countries = let
   Source = Lakehouse.Contents(null),
