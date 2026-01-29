@@ -1,0 +1,92 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "DF_Silver_to_Gold",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "Dimention Countries": {
+      "queryId": "9b83c65b-7e05-4bac-9d40-3395bde3f907",
+      "queryName": "Dimention Countries",
+      "loadEnabled": false
+    },
+    "Food price inflation": {
+      "queryId": "40325583-ff99-4fcb-bd71-fa46f1bb26e5",
+      "queryName": "Food price inflation"
+    },
+    "GDP Social Protection Spending": {
+      "queryId": "eb43c102-ea79-4e62-adec-652d6c278f18",
+      "queryName": "GDP Social Protection Spending"
+    },
+    "GNI per capita": {
+      "queryId": "fe82805e-79ce-4e5b-8ee3-9ecd010e3ef0",
+      "queryName": "GNI per capita"
+    },
+    "Life Expectancy After Birth": {
+      "queryId": "e283bd9b-ad40-4fba-aa13-283e01c4e0e3",
+      "queryName": "Life Expectancy After Birth"
+    },
+    "Population by Illiteracy": {
+      "queryId": "60f3a217-2f57-454f-9519-c2aa0b4346fe",
+      "queryName": "Population by Illiteracy"
+    },
+    "Population by School Attendance": {
+      "queryId": "d274d827-7634-4a9f-9184-7bdce7f1193a",
+      "queryName": "Population by School Attendance"
+    },
+    "Population by Type of Living Quarters": {
+      "queryId": "0e7fbdbe-85b7-4a0f-90a1-b009328a0274",
+      "queryName": "Population by Type of Living Quarters"
+    },
+    "Population in poverty": {
+      "queryId": "e55d16f6-1625-488f-903a-061b521c5961",
+      "queryName": "Population in poverty"
+    },
+    "Population living in slums": {
+      "queryId": "abd08b4d-4e82-40f7-99cc-84dd079430c0",
+      "queryName": "Population living in slums"
+    },
+    "Population using safely managed sanitation services": {
+      "queryId": "b940b8bb-f232-448d-8f34-bab8c873e898",
+      "queryName": "Population using safely managed sanitation services"
+    },
+    "Population with food insecurity": {
+      "queryId": "ee073564-6da8-42dc-b0cc-88a3fb30b466",
+      "queryName": "Population with food insecurity"
+    },
+    "Public Education Spending": {
+      "queryId": "ab44e01a-b43b-484c-993f-645066492c55",
+      "queryName": "Public Education Spending"
+    },
+    "Public Health Spending": {
+      "queryId": "f44f6313-4490-4000-81f2-237cabd7fe6f",
+      "queryName": "Public Health Spending"
+    },
+    "Renewable Energy Score": {
+      "queryId": "df2b3040-e6e3-4cb8-b533-29b4e33964d8",
+      "queryName": "Renewable Energy Score"
+    },
+    "Research and Development Spending": {
+      "queryId": "5ee17bc5-c0b1-44d0-bb10-4526bf708a35",
+      "queryName": "Research and Development Spending"
+    },
+    "Fact Country Data": {
+      "queryId": "0808822b-5754-423e-90ee-a9714bcf478c",
+      "queryName": "Fact Country Data",
+      "loadEnabled": false
+    },
+    "DefaultDestination": {
+      "queryId": "156f3bd6-e233-4402-be4d-c7befbd3b856",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"2bf3a0af-3091-4696-a883-e76d8f3dbf69\",\"DatasourceId\":\"65183c0a-9b97-48ea-8b4f-53f64f738a86\"}"
+    }
+  ]
+}
