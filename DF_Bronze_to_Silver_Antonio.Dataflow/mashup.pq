@@ -11,12 +11,14 @@ shared #"Renewable Energy Score" = let
   #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"Attribute", "Year"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Year", Int64.Type}}),
   #"Renamed columns 1" = Table.RenameColumns(#"Changed column type", {{"Year", "YEAR"}, {"Value", "VALUE"}}),
-  #"Removed duplicates" = Table.Distinct(#"Renamed columns 1", {"REF_AREA_LABEL"}),
-  #"Removed columns 1" = Table.RemoveColumns(#"Removed duplicates", {"REF_AREA_LABEL"}),
-  #"Renamed columns 2" = Table.RenameColumns(#"Removed columns 1", {{"REF_AREA", "Ref_Area"}, {"YEAR", "Year"}, {"VALUE", "Value"}}),
-  #"Rounded off" = Table.TransformColumns(#"Renamed columns 2", {{"Value", each Number.Round(_, 2), type number}})
+  #"Renamed columns 2" = Table.RenameColumns(#"Renamed columns 1", {{"REF_AREA", "Ref_Area"}, {"YEAR", "Year"}, {"VALUE", "Value"}}),
+  #"Rounded off" = Table.TransformColumns(#"Renamed columns 2", {{"Value", each Number.Round(_, 2), type number}}),
+  #"Merged queries" = Table.NestedJoin(#"Rounded off", {"Ref_Area"}, Countries, {"Country_Code"}, "Countries", JoinKind.LeftOuter),
+  #"Expanded Countries" = Table.ExpandTableColumn(#"Merged queries", "Countries", {"Country_Name"}, {"Country_Name"}),
+  #"Filtered rows" = Table.SelectRows(#"Expanded Countries", each ([Country_Name] <> null)),
+  #"Removed columns 2" = Table.RemoveColumns(#"Filtered rows", {"Country_Name", "REF_AREA_LABEL"})
 in
-  #"Rounded off";
+  #"Removed columns 2";
 [BindToDefaultDestination = true]
 shared #"GNI per capita" = let
   Source = Lakehouse.Contents(null),
@@ -29,9 +31,13 @@ shared #"GNI per capita" = let
   #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Attribute", "YEAR"}, {"Value", "VALUE"}}),
   #"Removed columns 1" = Table.RemoveColumns(#"Renamed columns", {"REF_AREA_LABEL"}),
   #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 1", {{"REF_AREA", "Ref_Area"}, {"YEAR", "Year"}, {"VALUE", "Value"}}),
-  #"Changed column type 1" = Table.TransformColumnTypes(#"Renamed columns 1", {{"Value", Currency.Type}})
+  #"Changed column type 1" = Table.TransformColumnTypes(#"Renamed columns 1", {{"Value", Currency.Type}}),
+  #"Merged queries" = Table.NestedJoin(#"Changed column type 1", {"Ref_Area"}, Countries, {"Country_Code"}, "Countries", JoinKind.LeftOuter),
+  #"Expanded Countries" = Table.ExpandTableColumn(#"Merged queries", "Countries", {"Country_Name"}, {"Country_Name"}),
+  #"Filtered rows" = Table.SelectRows(#"Expanded Countries", each ([Country_Name] <> null)),
+  #"Removed columns 2" = Table.RemoveColumns(#"Filtered rows", {"Country_Name"})
 in
-  #"Changed column type 1";
+  #"Removed columns 2";
 [BindToDefaultDestination = true]
 shared #"Life Expectancy After Birth" = let
   Source = Lakehouse.Contents(null),
@@ -44,9 +50,13 @@ shared #"Life Expectancy After Birth" = let
   #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Attribute", "YEAR"}, {"Value", "VALUE"}}),
   #"Removed columns 1" = Table.RemoveColumns(#"Renamed columns", {"REF_AREA_LABEL"}),
   #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 1", {{"REF_AREA", "Ref_Area"}, {"YEAR", "Year"}, {"VALUE", "Value"}}),
-  #"Rounded off" = Table.TransformColumns(#"Renamed columns 1", {{"Value", each Number.Round(_, 2), type number}})
+  #"Rounded off" = Table.TransformColumns(#"Renamed columns 1", {{"Value", each Number.Round(_, 2), type number}}),
+  #"Merged queries" = Table.NestedJoin(#"Rounded off", {"Ref_Area"}, Countries, {"Country_Code"}, "Countries", JoinKind.LeftOuter),
+  #"Expanded Countries" = Table.ExpandTableColumn(#"Merged queries", "Countries", {"Country_Code", "Country_Name"}, {"Country_Code", "Country_Name"}),
+  #"Filtered rows" = Table.SelectRows(#"Expanded Countries", each ([Country_Name] <> null)),
+  #"Removed columns 2" = Table.RemoveColumns(#"Filtered rows", {"Country_Code", "Country_Name"})
 in
-  #"Rounded off";
+  #"Removed columns 2";
 [BindToDefaultDestination = true]
 shared #"Public Education Spending" = let
   Source = Lakehouse.Contents(null),
@@ -74,9 +84,13 @@ shared #"Public Health Spending" = let
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"YEAR", Int64.Type}}),
   #"Removed columns 1" = Table.RemoveColumns(#"Changed column type", {"REF_AREA_LABEL"}),
   #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 1", {{"REF_AREA", "Ref_Area"}, {"YEAR", "Year"}, {"VALUE", "Value"}}),
-  #"Changed column type 1" = Table.TransformColumnTypes(#"Renamed columns 1", {{"Value", Currency.Type}})
+  #"Changed column type 1" = Table.TransformColumnTypes(#"Renamed columns 1", {{"Value", Currency.Type}}),
+  #"Merged queries" = Table.NestedJoin(#"Changed column type 1", {"Ref_Area"}, Countries, {"Country_Code"}, "Countries", JoinKind.LeftOuter),
+  #"Expanded Countries" = Table.ExpandTableColumn(#"Merged queries", "Countries", {"Country_Name"}, {"Country_Name"}),
+  #"Filtered rows" = Table.SelectRows(#"Expanded Countries", each ([Country_Name] <> null)),
+  #"Removed columns 2" = Table.RemoveColumns(#"Filtered rows", {"Country_Name"})
 in
-  #"Changed column type 1";
+  #"Removed columns 2";
 [BindToDefaultDestination = true]
 shared #"Research and Development Spending" = let
   Source = Lakehouse.Contents(null),
@@ -91,9 +105,13 @@ shared #"Research and Development Spending" = let
   #"Removed columns 1" = Table.RemoveColumns(#"Renamed columns 1", {"REF_AREA_LABEL"}),
   #"Renamed columns 2" = Table.RenameColumns(#"Removed columns 1", {{"REF_AREA", "Ref_Area"}, {"YEAR", "Year"}, {"VALUE", "Value"}}),
   #"Divided column" = Table.TransformColumns(#"Renamed columns 2", {{"Value", each _ / 100, type number}}),
-  #"Changed column type 1" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}})
+  #"Changed column type 1" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}}),
+  #"Merged queries" = Table.NestedJoin(#"Changed column type 1", {"Ref_Area"}, Countries, {"Country_Code"}, "Countries", JoinKind.LeftOuter),
+  #"Expanded Countries" = Table.ExpandTableColumn(#"Merged queries", "Countries", {"Country_Name"}, {"Country_Name"}),
+  #"Filtered rows" = Table.SelectRows(#"Expanded Countries", each ([Country_Name] <> null)),
+  #"Removed columns 2" = Table.RemoveColumns(#"Filtered rows", {"Country_Name"})
 in
-  #"Changed column type 1";
+  #"Removed columns 2";
 [BindToDefaultDestination = true]
 shared #"GDP Social Protection Spending" = let
   Source = Lakehouse.Contents(null),
@@ -105,9 +123,13 @@ shared #"GDP Social Protection Spending" = let
   #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA"}, "Attribute", "Value"),
   #"Renamed columns" = Table.RenameColumns(#"Unpivoted other columns", {{"REF_AREA", "Ref_Area"}, {"Attribute", "Year"}}),
   #"Divided column" = Table.TransformColumns(#"Renamed columns", {{"Value", each _ / 100, type number}}),
-  #"Changed column type" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}})
+  #"Changed column type" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}}),
+  #"Merged queries" = Table.NestedJoin(#"Changed column type", {"Ref_Area"}, Countries, {"Country_Code"}, "Countries", JoinKind.LeftOuter),
+  #"Expanded Countries" = Table.ExpandTableColumn(#"Merged queries", "Countries", {"Country_Name"}, {"Country_Name"}),
+  #"Filtered rows 1" = Table.SelectRows(#"Expanded Countries", each ([Country_Name] <> null)),
+  #"Removed columns 1" = Table.RemoveColumns(#"Filtered rows 1", {"Country_Name"})
 in
-  #"Changed column type";
+  #"Removed columns 1";
 [DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Countries_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
 shared Countries = let
   Source = Lakehouse.Contents(null),
