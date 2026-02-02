@@ -101,7 +101,7 @@
 # - Barreiras ao Conhecimento: Países com alta densidade de Slums (Favelas) apresentam taxas de Literacia significativamente menores, independentemente do GNI?
 # 
 # **Bloco B:** A Eficiência da Intervenção (A Solução)
-# Onde o dinheiro faz mais diferença? O investimento em Saúde tem um impacto maior na Expectativa de Vida do que o investimento em Proteção Social?
+# - Onde o dinheiro faz mais diferença? O investimento em Saúde tem um impacto maior na Expectativa de Vida do que o investimento em Proteção Social?
 # 
 # - Qualidade vs. Quantidade: O aumento do gasto em Educação está efetivamente se traduzindo em maiores taxas de Literacia e Attendance, ou há perda de eficiência no caminho?
 # 
