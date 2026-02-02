@@ -1,0 +1,231 @@
+{
+  "config": "{\"version\":\"5.69\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY25SU12\",\"type\":2,\"version\":{\"visual\":\"2.5.0\",\"report\":\"3.1.0\",\"page\":\"2.3.0\"}}},\"activeSectionIndex\":1,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "publicCustomVisuals": [
+    "quadrantChart1257AB39DB23121488AEB752BCB06127"
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY25SU12",
+            "path": "BaseThemes/CY25SU12.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "O Problema",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "100c57798da22f1513e1",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0d54dd1212a9b409d1ae\",\"layouts\":[{\"id\":0,\"position\":{\"x\":288.1710213776722,\"y\":6.840855106888361,\"z\":3000,\"width\":507.9334916864608,\"height\":238.5748218527316,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Sum(Fact Country Data.Population living in Collective living quarters)\"},{\"queryRef\":\"Sum(Fact Country Data.Population living in Housing units)\"},{\"queryRef\":\"Sum(Fact Country Data.Population living in slums)\"},{\"queryRef\":\"Sum(Fact Country Data.Population that are Roofless)\"},{\"queryRef\":\"Sum(Fact Country Data.Population with Unknown housing)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population living in Collective living quarters\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population living in Collective living quarters)\",\"NativeReferenceName\":\"Average of Population living in Collective living quarters\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population living in Housing units\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population living in Housing units)\",\"NativeReferenceName\":\"Average of Population living in Housing units\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population living in slums\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population living in slums)\",\"NativeReferenceName\":\"Average of Population living in slums\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population that are Roofless\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population that are Roofless)\",\"NativeReferenceName\":\"Average of Population that are Roofless\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population with Unknown housing\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population with Unknown housing)\",\"NativeReferenceName\":\"Average of Population with Unknown housing\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population living in Collective living quarters\"}},\"Function\":1}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 238.57,
+          "width": 507.93,
+          "x": 288.17,
+          "y": 6.84,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"26687796041bafb6aadd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":288.1710213776722,\"y\":244.5605700712589,\"z\":4000,\"width\":507.9334916864608,\"height\":149.6437054631829,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"Sum(Fact Country Data.Population using safely managed sanitation services)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population using safely managed sanitation services\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population using safely managed sanitation services)\",\"NativeReferenceName\":\"Average of Population using safely managed sanitation services\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population using safely managed sanitation services\"}},\"Function\":1}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 149.64,
+          "width": 507.93,
+          "x": 288.17,
+          "y": 244.56,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"5d1983b1f3414c518921\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":76.10451306413302,\"z\":1000,\"width\":288.1710213776722,\"height\":72.68408551068883,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dimention Year.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Dimention Year.Year\",\"NativeReferenceName\":\"Year\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"syncGroup\":{\"groupName\":\"Year\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 72.68,
+          "width": 288.17,
+          "x": 0.00,
+          "y": 76.10,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"7d061bb81b7566db9994\",\"layouts\":[{\"id\":0,\"position\":{\"x\":795.8364312267659,\"y\":360.4460966542751,\"z\":6000,\"width\":484.1635687732342,\"height\":359.2565055762082,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Fact Country Data.Population with food insecurity)\"}],\"X\":[{\"queryRef\":\"Sum(Fact Country Data.Population in poverty)\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population with food insecurity\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population with food insecurity)\",\"NativeReferenceName\":\"Average of Population with food insecurity\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population in poverty\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population in poverty)\",\"NativeReferenceName\":\"Average of Population in poverty\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"trend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"displayName\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend line 1'\"}}},\"style\":{\"expr\":{\"Literal\":{\"Value\":\"'solid'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 359.26,
+          "width": 484.16,
+          "x": 795.84,
+          "y": 360.45,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"82bcaa2fab4e41986e77\",\"layouts\":[{\"id\":0,\"position\":{\"x\":288.1710213776722,\"y\":394.20427553444176,\"z\":2000,\"width\":507.9334916864608,\"height\":325.7957244655582,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}],\"X\":[{\"queryRef\":\"Sum(Fact Country Data.Population living in slums)\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Fact Country Data.Illiterate Population)\"}],\"Size\":[{\"queryRef\":\"Sum(Fact Country Data.GNI per capita)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population living in slums\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population living in slums)\",\"NativeReferenceName\":\"Average of Population living in slums\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Illiterate Population\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Illiterate Population)\",\"NativeReferenceName\":\"Average of Illiterate Population\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"GNI per capita\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.GNI per capita)\",\"NativeReferenceName\":\"Average of GNI per capita\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 325.80,
+          "width": 507.93,
+          "x": 288.17,
+          "y": 394.20,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"955fef9c9e9ed07cd294\",\"layouts\":[{\"id\":0,\"position\":{\"x\":795.8364312267659,\"y\":0,\"z\":5000,\"width\":484.1635687732342,\"height\":360.4460966542751,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}],\"X\":[{\"queryRef\":\"Sum(Fact Country Data.Food price inflation)\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Fact Country Data.Population with food insecurity)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Food price inflation\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Food price inflation)\",\"NativeReferenceName\":\"Average of Food price inflation\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population with food insecurity\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population with food insecurity)\",\"NativeReferenceName\":\"Average of Population with food insecurity\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"trend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"displayName\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend line 1'\"}}},\"style\":{\"expr\":{\"Literal\":{\"Value\":\"'solid'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 360.45,
+          "width": 484.16,
+          "x": 795.84,
+          "y": 0.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"9f7092e520c7ad84b20c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":288.1710213776722,\"height\":76.10451306413302,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"syncGroup\":{\"groupName\":\"Country_Name\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[{\"name\":\"2f01403341df65f6604a\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dimention Countries\"}},\"Property\":\"Country_Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 76.10,
+          "width": 288.17,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "O Resultado",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "98fab08aa12de574a657",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"26cbbb64a4e5625ef7a6\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":2,\"width\":280.1843317972351,\"height\":71.76651305683565,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"syncGroup\":{\"groupName\":\"Country_Name\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}}}}]}}}",
+          "filters": "[{\"name\":\"2f01403341df65f6604a\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dimention Countries\"}},\"Property\":\"Country_Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 71.77,
+          "width": 280.18,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"8c4a4a88373797dcd81c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":75.6989247311828,\"z\":4,\"width\":280.1843317972351,\"height\":72.74961597542243,\"tabOrder\":4}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dimention Year.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Dimention Year.Year\",\"NativeReferenceName\":\"Year\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"syncGroup\":{\"groupName\":\"Year\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 72.75,
+          "width": 280.18,
+          "x": 0.00,
+          "y": 75.70,
+          "z": 4.00
+        },
+        {
+          "config": "{\"name\":\"d91ab732a293bd6e143f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":290.9984639016897,\"z\":3,\"width\":693.0875576036867,\"height\":428.6328725038403,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"X\":[{\"queryRef\":\"Sum(Fact Country Data.Renewable Energy Score)\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Fact Country Data.GNI per capita)\"}],\"Category\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Renewable Energy Score\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Renewable Energy Score)\",\"NativeReferenceName\":\"Average of Renewable Energy Score\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"GNI per capita\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.GNI per capita)\",\"NativeReferenceName\":\"Average of GNI per capita\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"trend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"displayName\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend line 1'\"}}},\"style\":{\"expr\":{\"Literal\":{\"Value\":\"'solid'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 428.63,
+          "width": 693.09,
+          "x": 0.00,
+          "y": 291.00,
+          "z": 3.00
+        },
+        {
+          "config": "{\"name\":\"e75687cace0304128177\",\"layouts\":[{\"id\":0,\"position\":{\"x\":693.0875576036867,\"y\":0,\"z\":0,\"width\":586.9124423963134,\"height\":359.815668202765,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Dimention Year.Year\",\"active\":true}],\"Y2\":[{\"queryRef\":\"Sum(Fact Country Data.Renewable Energy Score)\"}],\"Y\":[{\"queryRef\":\"Sum(Fact Country Data.Population using safely managed sanitation services)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Dimention Year.Year\",\"NativeReferenceName\":\"Year\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Renewable Energy Score\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Renewable Energy Score)\",\"NativeReferenceName\":\"Average of Renewable Energy Score\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population using safely managed sanitation services\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population using safely managed sanitation services)\",\"NativeReferenceName\":\"Average of Population using safely managed sanitation services\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[{\"name\":\"2791fcca9debef230717\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dimention Year\"}},\"Property\":\"Year\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'2010'\"}}],[{\"Literal\":{\"Value\":\"'2011'\"}}],[{\"Literal\":{\"Value\":\"'2012'\"}}],[{\"Literal\":{\"Value\":\"'2013'\"}}],[{\"Literal\":{\"Value\":\"'2014'\"}}],[{\"Literal\":{\"Value\":\"'2015'\"}}],[{\"Literal\":{\"Value\":\"'2016'\"}}],[{\"Literal\":{\"Value\":\"'2017'\"}}],[{\"Literal\":{\"Value\":\"'2018'\"}}],[{\"Literal\":{\"Value\":\"'2019'\"}}],[{\"Literal\":{\"Value\":\"'2020'\"}}],[{\"Literal\":{\"Value\":\"'2021'\"}}],[{\"Literal\":{\"Value\":\"'2022'\"}}],[{\"Literal\":{\"Value\":\"'2023'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{},\"isHiddenInViewMode\":false}]",
+          "height": 359.82,
+          "width": 586.91,
+          "x": 693.09,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"e7ce2557566dff66bd87\",\"layouts\":[{\"id\":0,\"position\":{\"x\":693.0875576036867,\"y\":359.815668202765,\"z\":1,\"width\":586.9124423963134,\"height\":359.815668202765,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Sum(Fact Country Data.Population with food insecurity)\"},{\"queryRef\":\"Sum(Fact Country Data.Population using safely managed sanitation services)\"},{\"queryRef\":\"Sum(Fact Country Data.Population in poverty)\"}],\"Category\":[{\"queryRef\":\"Dimention Year.Year\",\"active\":true}],\"Y2\":[{\"queryRef\":\"Avg(Fact Country Data.Life Expectancy After Birth)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population with food insecurity\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population with food insecurity)\",\"NativeReferenceName\":\"Average of Population with food insecurity\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population using safely managed sanitation services\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population using safely managed sanitation services)\",\"NativeReferenceName\":\"Average of Population using safely managed sanitation services\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population in poverty\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population in poverty)\",\"NativeReferenceName\":\"Average of Population in poverty\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Dimention Year.Year\",\"NativeReferenceName\":\"Year\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Life Expectancy After Birth\"}},\"Function\":1},\"Name\":\"Avg(Fact Country Data.Life Expectancy After Birth)\",\"NativeReferenceName\":\"Average of Life Expectancy After Birth\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[{\"name\":\"691fb4a479c87eb97900\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dimention Year\"}},\"Property\":\"Year\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'2015'\"}}],[{\"Literal\":{\"Value\":\"'2016'\"}}],[{\"Literal\":{\"Value\":\"'2017'\"}}],[{\"Literal\":{\"Value\":\"'2018'\"}}],[{\"Literal\":{\"Value\":\"'2019'\"}}],[{\"Literal\":{\"Value\":\"'2020'\"}}],[{\"Literal\":{\"Value\":\"'2021'\"}}],[{\"Literal\":{\"Value\":\"'2022'\"}}],[{\"Literal\":{\"Value\":\"'2023'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{},\"isHiddenInViewMode\":false}]",
+          "height": 359.82,
+          "width": 586.91,
+          "x": 693.09,
+          "y": 359.82,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "A Solução",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "99b88d9f34de7413ea8e",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"18a3280d8083c073ea5c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":76.10451306413302,\"z\":2004,\"width\":288.1710213776722,\"height\":72.68408551068883,\"tabOrder\":2004}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dimention Year.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Dimention Year.Year\",\"NativeReferenceName\":\"Year\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"syncGroup\":{\"groupName\":\"Year\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[]",
+          "height": 72.68,
+          "width": 288.17,
+          "x": 0.00,
+          "y": 76.10,
+          "z": 2004.00
+        },
+        {
+          "config": "{\"name\":\"3c4050e113230fac3d67\",\"layouts\":[{\"id\":0,\"position\":{\"x\":806.3657957244656,\"y\":360,\"z\":1000,\"width\":473.729216152019,\"height\":360,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"X\":[{\"queryRef\":\"Fact Country Data.Life Expectancy After Birth\",\"active\":true}],\"Y\":[{\"queryRef\":\"Fact Country Data.Public Health Spending\"}],\"Category\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Life Expectancy After Birth\"}},\"Function\":1},\"Name\":\"Fact Country Data.Life Expectancy After Birth\",\"NativeReferenceName\":\"Average of Life Expectancy After Birth\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Public Health Spending\"}},\"Function\":1},\"Name\":\"Fact Country Data.Public Health Spending\",\"NativeReferenceName\":\"Average of Public Health Spending\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 360.00,
+          "width": 473.73,
+          "x": 806.37,
+          "y": 360.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"430505e6bb7f9b1dd64f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":318.52534562211986,\"z\":2001,\"width\":806.1443932411674,\"height\":401.10599078341016,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Dimention Year.Year\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(Fact Country Data.Population Not attending school)\"},{\"queryRef\":\"Sum(Fact Country Data.Illiterate Population)\"}],\"Y2\":[{\"queryRef\":\"Avg(Fact Country Data.Public Education Spending)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Dimention Year.Year\",\"NativeReferenceName\":\"Year\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Population Not attending school\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Population Not attending school)\",\"NativeReferenceName\":\"Average of Population Not attending school\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Illiterate Population\"}},\"Function\":1},\"Name\":\"Sum(Fact Country Data.Illiterate Population)\",\"NativeReferenceName\":\"Average of Illiterate Population\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Public Education Spending\"}},\"Function\":1},\"Name\":\"Avg(Fact Country Data.Public Education Spending)\",\"NativeReferenceName\":\"Average of Public Education Spending\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"categoryAxis\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"9D\"}}}}}]}}}",
+          "filters": "[{\"name\":\"6b2de44d04364a4a07fa\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dimention Year\"}},\"Property\":\"Year\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'1995'\"}}],[{\"Literal\":{\"Value\":\"'1996'\"}}],[{\"Literal\":{\"Value\":\"'1997'\"}}],[{\"Literal\":{\"Value\":\"'1998'\"}}],[{\"Literal\":{\"Value\":\"'1999'\"}}],[{\"Literal\":{\"Value\":\"'2000'\"}}],[{\"Literal\":{\"Value\":\"'2001'\"}}],[{\"Literal\":{\"Value\":\"'2002'\"}}],[{\"Literal\":{\"Value\":\"'2003'\"}}],[{\"Literal\":{\"Value\":\"'2004'\"}}],[{\"Literal\":{\"Value\":\"'2005'\"}}],[{\"Literal\":{\"Value\":\"'2006'\"}}],[{\"Literal\":{\"Value\":\"'2007'\"}}],[{\"Literal\":{\"Value\":\"'2008'\"}}],[{\"Literal\":{\"Value\":\"'2009'\"}}],[{\"Literal\":{\"Value\":\"'2010'\"}}],[{\"Literal\":{\"Value\":\"'2011'\"}}],[{\"Literal\":{\"Value\":\"'2012'\"}}],[{\"Literal\":{\"Value\":\"'2013'\"}}],[{\"Literal\":{\"Value\":\"'2014'\"}}],[{\"Literal\":{\"Value\":\"'2015'\"}}],[{\"Literal\":{\"Value\":\"'2016'\"}}],[{\"Literal\":{\"Value\":\"'2017'\"}}],[{\"Literal\":{\"Value\":\"'2018'\"}}],[{\"Literal\":{\"Value\":\"'2019'\"}}],[{\"Literal\":{\"Value\":\"'2020'\"}}],[{\"Literal\":{\"Value\":\"'2021'\"}}],[{\"Literal\":{\"Value\":\"'2022'\"}}],[{\"Literal\":{\"Value\":\"'2023'\"}}],[{\"Literal\":{\"Value\":\"'2024'\"}}],[{\"Literal\":{\"Value\":\"'2025'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{},\"isHiddenInViewMode\":false}]",
+          "height": 401.11,
+          "width": 806.14,
+          "x": 0.00,
+          "y": 318.53,
+          "z": 2001.00
+        },
+        {
+          "config": "{\"name\":\"945a5a0661b6e6cf17ee\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.72644376899696,\"y\":0,\"z\":0,\"width\":280.1215805471125,\"height\":100.1823708206687,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"syncGroup\":{\"groupName\":\"Country_Name\",\"fieldChanges\":true,\"filterChanges\":true},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}]}}}",
+          "filters": "[{\"name\":\"2f01403341df65f6604a\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dimention Countries\"}},\"Property\":\"Country_Name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"null\"}}]]}}}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{\"general\":[{\"properties\":{\"isInvertedSelectionMode\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"isHiddenInViewMode\":false}]",
+          "height": 100.18,
+          "width": 280.12,
+          "x": 9.73,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"abcf92a5e9ce5a05ed31\",\"layouts\":[{\"id\":0,\"position\":{\"x\":806.3657957244656,\"y\":0,\"z\":2000,\"width\":473.729216152019,\"height\":349.73871733966746,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"X\":[{\"queryRef\":\"Fact Country Data.Life Expectancy After Birth\",\"active\":true}],\"Y\":[{\"queryRef\":\"Fact Country Data.GDP Social Protection Spending\"}],\"Category\":[{\"queryRef\":\"Dimention Countries.Country_Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dimention Countries\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Life Expectancy After Birth\"}},\"Function\":1},\"Name\":\"Fact Country Data.Life Expectancy After Birth\",\"NativeReferenceName\":\"Average of Life Expectancy After Birth\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"GDP Social Protection Spending\"}},\"Function\":1},\"Name\":\"Fact Country Data.GDP Social Protection Spending\",\"NativeReferenceName\":\"Average of GDP Social Protection Spending\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Country_Name\"},\"Name\":\"Dimention Countries.Country_Name\",\"NativeReferenceName\":\"Country\"}]},\"columnProperties\":{\"Dimention Countries.Country_Name\":{\"displayName\":\"Country\"}},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 349.74,
+          "width": 473.73,
+          "x": 806.37,
+          "y": 0.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"bbca55e1fafd96cb8417\",\"layouts\":[{\"id\":0,\"position\":{\"x\":442.39631336405535,\"y\":239.87711213517667,\"z\":2003,\"width\":516.1290322580645,\"height\":318.52534562211986,\"tabOrder\":2003}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Avg(Fact Country Data.Research and Development Spending)\"}],\"Category\":[{\"queryRef\":\"Dimention Year.Year\",\"active\":true}],\"Y2\":[{\"queryRef\":\"Avg(Fact Country Data.Renewable Energy Score)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Research and Development Spending\"}},\"Function\":1},\"Name\":\"Avg(Fact Country Data.Research and Development Spending)\",\"NativeReferenceName\":\"Average of Research and Development Spending\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Dimention Year.Year\",\"NativeReferenceName\":\"Year\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Renewable Energy Score\"}},\"Function\":1},\"Name\":\"Avg(Fact Country Data.Renewable Energy Score)\",\"NativeReferenceName\":\"Average of Renewable Energy Score\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[{\"name\":\"406ee15df5319fcf28cd\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dimention Year\"}},\"Property\":\"Year\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'2010'\"}}],[{\"Literal\":{\"Value\":\"'2011'\"}}],[{\"Literal\":{\"Value\":\"'2012'\"}}],[{\"Literal\":{\"Value\":\"'2013'\"}}],[{\"Literal\":{\"Value\":\"'2014'\"}}],[{\"Literal\":{\"Value\":\"'2015'\"}}],[{\"Literal\":{\"Value\":\"'2016'\"}}],[{\"Literal\":{\"Value\":\"'2017'\"}}],[{\"Literal\":{\"Value\":\"'2018'\"}}],[{\"Literal\":{\"Value\":\"'2019'\"}}],[{\"Literal\":{\"Value\":\"'2020'\"}}],[{\"Literal\":{\"Value\":\"'2021'\"}}],[{\"Literal\":{\"Value\":\"'2022'\"}}],[{\"Literal\":{\"Value\":\"'2023'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{},\"isHiddenInViewMode\":false}]",
+          "height": 318.53,
+          "width": 516.13,
+          "x": 442.40,
+          "y": 239.88,
+          "z": 2003.00
+        },
+        {
+          "config": "{\"name\":\"ee6e00ee8b1794e63361\",\"layouts\":[{\"id\":0,\"position\":{\"x\":290.01536098310294,\"y\":0,\"z\":2002,\"width\":516.1290322580645,\"height\":318.52534562211986,\"tabOrder\":2002}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Y\":[{\"queryRef\":\"Avg(Fact Country Data.Research and Development Spending)\"}],\"Category\":[{\"queryRef\":\"Dimention Year.Year\",\"active\":true}],\"Y2\":[{\"queryRef\":\"Avg(Fact Country Data.GNI per capita)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Country Data\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Research and Development Spending\"}},\"Function\":1},\"Name\":\"Avg(Fact Country Data.Research and Development Spending)\",\"NativeReferenceName\":\"Average of Research and Development Spending\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"},\"Name\":\"Dimention Year.Year\",\"NativeReferenceName\":\"Year\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"GNI per capita\"}},\"Function\":1},\"Name\":\"Avg(Fact Country Data.GNI per capita)\",\"NativeReferenceName\":\"Average of GNI per capita\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[{\"name\":\"406ee15df5319fcf28cd\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dimention Year\"}},\"Property\":\"Year\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dimention Year\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'2010'\"}}],[{\"Literal\":{\"Value\":\"'2011'\"}}],[{\"Literal\":{\"Value\":\"'2012'\"}}],[{\"Literal\":{\"Value\":\"'2013'\"}}],[{\"Literal\":{\"Value\":\"'2014'\"}}],[{\"Literal\":{\"Value\":\"'2015'\"}}],[{\"Literal\":{\"Value\":\"'2016'\"}}],[{\"Literal\":{\"Value\":\"'2017'\"}}],[{\"Literal\":{\"Value\":\"'2018'\"}}],[{\"Literal\":{\"Value\":\"'2019'\"}}],[{\"Literal\":{\"Value\":\"'2020'\"}}],[{\"Literal\":{\"Value\":\"'2021'\"}}],[{\"Literal\":{\"Value\":\"'2022'\"}}],[{\"Literal\":{\"Value\":\"'2023'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":0,\"objects\":{},\"isHiddenInViewMode\":false}]",
+          "height": 318.53,
+          "width": 516.13,
+          "x": 290.02,
+          "y": 0.00,
+          "z": 2002.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

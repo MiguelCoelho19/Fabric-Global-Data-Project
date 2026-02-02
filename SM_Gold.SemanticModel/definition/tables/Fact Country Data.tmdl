@@ -228,15 +228,16 @@ table 'Fact Country Data'
 
 	column 'Research and Development Spending'
 		dataType: double
+		formatString: 0.0000
 		sourceProviderType: decimal(19, 4)
 		lineageTag: ba65f685-a059-4e95-ba22-5c26cc8a74bc
 		sourceLineageTag: Research and Development Spending
 		summarizeBy: sum
 		sourceColumn: Research and Development Spending
 
-		annotation SummarizationSetBy = Automatic
+		changedProperty = FormatString
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		annotation SummarizationSetBy = Automatic
 
 	partition 'Fact Country Data' = entity
 		mode: directLake

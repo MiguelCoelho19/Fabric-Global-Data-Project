@@ -10,6 +10,8 @@ table 'Dimention Year'
 		summarizeBy: none
 		sourceColumn: Year
 
+		changedProperty = SummarizeBy
+
 		annotation SummarizationSetBy = Automatic
 
 	partition 'Dimention Year' = entity
