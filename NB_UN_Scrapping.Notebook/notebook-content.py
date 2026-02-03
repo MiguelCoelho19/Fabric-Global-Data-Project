@@ -4,16 +4,17 @@
 
 # META {
 # META   "kernel_info": {
-# META     "name": "synapse_pyspark"
+# META     "name": "jupyter",
+# META     "jupyter_kernel_name": "python3.11"
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "caea25e2-1b4f-4b81-913a-7fd6b66cce9e",
+# META       "default_lakehouse": "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1",
 # META       "default_lakehouse_name": "LH_Bronze",
-# META       "default_lakehouse_workspace_id": "dff63297-ff0e-4927-8e91-bc223e951376",
+# META       "default_lakehouse_workspace_id": "336a3dcc-c24a-497c-8a80-a8fefb6face9",
 # META       "known_lakehouses": [
 # META         {
-# META           "id": "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"
+# META           "id": "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"
 # META         }
 # META       ]
 # META     }
@@ -38,7 +39,7 @@ QUESTIONS = [
         "r_un_attendance.csv"
     ],
     [
-        "https://data.un.org/Data.aspx?d=POP&f=tableCode%3a31&c=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18&s=_countryEnglishNameOrderBy:asc,refYear:desc,areaCode:asc&v=",
+       "https://data.un.org/Data.aspx?d=POP&f=tableCode%3a31&c=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18&s=_countryEnglishNameOrderBy:asc,refYear:desc,areaCode:asc&v=",
         "p_un_literacy.csv"
     ]
 ]
@@ -115,5 +116,5 @@ for q in QUESTIONS:
 
 # META {
 # META   "language": "python",
-# META   "language_group": "synapse_pyspark"
+# META   "language_group": "jupyter_python"
 # META }

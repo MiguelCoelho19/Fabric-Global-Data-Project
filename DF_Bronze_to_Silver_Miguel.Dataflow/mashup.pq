@@ -1,10 +1,10 @@
 [DefaultOutputDestinationSettings = [DestinationDefinition = [Kind = "Reference", QueryName = "DefaultDestination", IsNewTarget = true], UpdateMethod = [Kind = "Replace"], DestinationTypeSettings = [Kind = "Table"]], StagingDefinition = [Kind = "FastCopy"]]
 section Section1;
-[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Population by Illiteracy_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
+[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Population by Illiteracy_DataDestination", IsNewTarget = true], Settings = [Kind = "Manual", AllowCreation = true, ColumnSettings = [Mappings = {[SourceColumnName = "Year", DestinationColumnName = "Year"], [SourceColumnName = "Value", DestinationColumnName = "Value"], [SourceColumnName = "country_code", DestinationColumnName = "country_code"]}], DynamicSchema = true, UpdateMethod = [Kind = "Replace"], TypeSettings = [Kind = "Table"]]]}]
 shared #"Population by Illiteracy" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "p_un_literacy", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"table_code", "reliability_code", "reliability", "column_19", "record_type", "record_type_code"}),
   #"Filtered rows" = Table.SelectRows(#"Removed columns", each ([sex] = "Both Sexes") and ([area] = "Total") and ([age] = "10 - 14" or [age] = "100 +" or [age] = "15 - 19" or [age] = "20 - 24" or [age] = "25 - 29" or [age] = "30 - 34" or [age] = "35 - 39" or [age] = "40 - 44" or [age] = "45 - 49" or [age] = "50 - 54" or [age] = "55 - 59" or [age] = "60 - 64" or [age] = "65 - 69" or [age] = "70 - 74" or [age] = "75 - 79" or [age] = "80 - 84" or [age] = "85 - 89" or [age] = "90 - 94" or [age] = "95 - 99")),
@@ -27,11 +27,11 @@ shared #"Population by Illiteracy" = let
   #"Renamed columns" = Table.RenameColumns(#"Removed columns 4", {{"year", "Year"}})
 in
   #"Renamed columns";
-[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Population by Type of Living Quarters_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
+[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Population by Type of Living Quarters_DataDestination", IsNewTarget = true], Settings = [Kind = "Manual", AllowCreation = true, ColumnSettings = [Mappings = {[SourceColumnName = "Year", DestinationColumnName = "Year"], [SourceColumnName = "Housing units", DestinationColumnName = "Housing units"], [SourceColumnName = "Collective living quarters", DestinationColumnName = "Collective living quarters"], [SourceColumnName = "Roofless", DestinationColumnName = "Roofless"], [SourceColumnName = "Unknown", DestinationColumnName = "Unknown"], [SourceColumnName = "country_code", DestinationColumnName = "country_code"]}], DynamicSchema = true, UpdateMethod = [Kind = "Replace"], TypeSettings = [Kind = "Table"]]]}]
 shared #"Population by Type of Living Quarters" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "p_un_quarters", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"table_code", "record_type_code", "record_type", "reliability", "reliability_code", "column_19"}),
   #"Filtered rows" = Table.SelectRows(#"Removed columns", each ([area] = "Total") and ([sex] = "Both Sexes")),
@@ -55,56 +55,12 @@ shared #"Population by Type of Living Quarters" = let
   #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 4", {{"year", "Year"}})
 in
   #"Renamed columns 1";
-[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Population by School Attendance_DataDestination", IsNewTarget = true], Settings = [Kind = "Automatic", TypeSettings = [Kind = "Table"]]]}]
-shared #"Population by School Attendance" = let
-  Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
-  #"Navigation 2" = #"Navigation 1"{[Id = "r_un_attendance", ItemKind = "Table"]}[Data],
-  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"table_code", "record_type_code", "record_type", "reliability_code", "reliability", "column_19", "reference_date", "area_code", "sex_code", "code_of_age", "code_of_school_attendance", "source_year"}),
-  #"Filtered rows" = Table.SelectRows(#"Removed columns", each ([area] = "Total") and ([sex] = "Both Sexes")),
-  #"Removed columns 1" = Table.RemoveColumns(#"Filtered rows", {"area", "sex"}),
-  #"Filtered rows 1" = Table.SelectRows(#"Removed columns 1", each ([age] = "10" or [age] = "11" or [age] = "12" or [age] = "13" or [age] = "14" or [age] = "15" or [age] = "16" or [age] = "17" or [age] = "18" or [age] = "19" or [age] = "20" or [age] = "21" or [age] = "22" or [age] = "23" or [age] = "24" or [age] = "5" or [age] = "6" or [age] = "7" or [age] = "8" or [age] = "9")),
-  #"Pivoted column 1" = Table.Pivot(Table.TransformColumnTypes(#"Filtered rows 1", {{"age", type text}}), List.Distinct(Table.TransformColumnTypes(#"Filtered rows 1", {{"age", type text}})[age]), "age", "value"),
-  #"Replaced value" = Table.ReplaceValue(#"Pivoted column 1", null, "0", Replacer.ReplaceValue, {"20", "6", "11", "12", "22", "8", "18", "24", "5", "9", "10", "13", "14", "21", "16", "7", "15", "19", "23", "17"}),
-  #"Changed column type" = Table.TransformColumnTypes(#"Replaced value", {{"17", Int64.Type}, {"23", Int64.Type}, {"19", Int64.Type}, {"15", Int64.Type}, {"7", Int64.Type}, {"16", Int64.Type}, {"21", Int64.Type}, {"14", Int64.Type}, {"13", Int64.Type}, {"10", Int64.Type}, {"9", Int64.Type}, {"5", Int64.Type}, {"24", Int64.Type}, {"18", Int64.Type}, {"8", Int64.Type}, {"22", Int64.Type}, {"12", Int64.Type}, {"11", Int64.Type}, {"6", Int64.Type}, {"20", Int64.Type}}),
-  #"Added custom" = Table.TransformColumnTypes(Table.AddColumn(#"Changed column type", "Value", each [20]+[6]+[11]+[12]+[22]+[8]+[18]+[24]+[5]+[9]+[10]+[13]+[14]+[21]+[16]+[7]+[15]+[19]+[23]+[17]), {{"Value", Int64.Type}}),
-  #"Removed columns 2" = Table.RemoveColumns(#"Added custom", {"17", "23", "19", "15", "7", "16", "21", "14", "13", "10", "9", "5", "24", "18", "8", "22", "12", "11", "6", "20"}),
-  #"Pivoted column" = Table.Pivot(Table.TransformColumnTypes(#"Removed columns 2", {{"school_attendance", type text}}), List.Distinct(Table.TransformColumnTypes(#"Removed columns 2", {{"school_attendance", type text}})[school_attendance]), "school_attendance", "Value"),
-  #"Replaced value 1" = Table.ReplaceValue(#"Pivoted column", null, 0, Replacer.ReplaceValue, {"Not attending school"}),
-  #"Added custom 1" = Table.TransformColumnTypes(Table.AddColumn(#"Replaced value 1", "Value", each ([Not attending school])/[Total]), {{"Value", Percentage.Type}}),
-  #"Removed columns 3" = Table.RemoveColumns(#"Added custom 1", {"Attending school", "Not attending school", "Not stated", "Total"}),
-  #"Renamed columns" = Table.RenameColumns(#"Removed columns 3", {{"Value", "Not attending school"}}),
-  #"Merged queries" = Table.NestedJoin(#"Renamed columns", {"country_or_area_code"}, #"countries csv", {"ref_area"}, "countries csv", JoinKind.LeftOuter),
-  #"Expanded countries csv" = Table.ExpandTableColumn(#"Merged queries", "countries csv", {"country_code", "country_name"}, {"country_code", "country_name"}),
-  #"Filtered rows 2" = Table.SelectRows(#"Expanded countries csv", each ([country_name] <> null)),
-  #"Removed columns 4" = Table.RemoveColumns(#"Filtered rows 2", {"country_or_area", "country_name", "country_or_area_code"}),
-  #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 4", {{"year", "Year"}})
-in
-  #"Renamed columns 1";
-[BindToDefaultDestination = true]
-shared #"Population with food insecurity" = let
-  Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
-  #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_food", ItemKind = "Table"]}[Data],
-  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_3_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
-  #"Unpivoted columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Year", "Value"),
-  #"Divided column" = Table.TransformColumns(#"Unpivoted columns", {{"Value", each _ / 100, type number}}),
-  #"Changed column type" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}}),
-  #"Merged queries" = Table.NestedJoin(#"Changed column type", {"REF_AREA"}, #"countries csv", {"country_code"}, "countries csv", JoinKind.LeftOuter),
-  #"Expanded countries csv" = Table.ExpandTableColumn(#"Merged queries", "countries csv", {"country_name"}, {"country_name"}),
-  #"Filtered rows" = Table.SelectRows(#"Expanded countries csv", each ([country_name] <> null)),
-  #"Removed columns 1" = Table.RemoveColumns(#"Filtered rows", {"REF_AREA_LABEL", "country_name"}),
-  #"Renamed columns" = Table.RenameColumns(#"Removed columns 1", {{"REF_AREA", "country_code"}})
-in
-  #"Renamed columns";
 [BindToDefaultDestination = true]
 shared #"Food price inflation" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
-  #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_priceindices", ItemKind = "Table"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_price_indices", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"FREQ", "FREQ_LABEL", "DATABASE_ID", "DATABASE_ID_LABEL", "UNIT_MULT", "UNIT_MULT_LABEL", "OBS_STATUS", "OBS_STATUS_LABEL", "OBS_CONF", "OBS_CONF_LABEL"}),
   #"Filtered rows" = Table.SelectRows(#"Removed columns", each ([INDICATOR_LABEL] = "Food price inflation")),
   #"Removed columns 1" = Table.RemoveColumns(#"Filtered rows", {"INDICATOR", "INDICATOR_LABEL", "UNIT_MEASURE", "UNIT_MEASURE_LABEL", "AGG_METHOD_LABEL", "AGG_METHOD"}),
@@ -145,11 +101,55 @@ shared #"Food price inflation" = let
   #"Renamed columns" = Table.RenameColumns(#"Removed columns 3", {{"REF_AREA", "country_code"}})
 in
   #"Renamed columns";
+[DataDestinations = {[Definition = [Kind = "Reference", QueryName = "Population by School Attendance_DataDestination", IsNewTarget = true], Settings = [Kind = "Manual", AllowCreation = true, ColumnSettings = [Mappings = {[SourceColumnName = "Year", DestinationColumnName = "Year"], [SourceColumnName = "Not attending school", DestinationColumnName = "Not attending school"], [SourceColumnName = "country_code", DestinationColumnName = "country_code"]}], DynamicSchema = true, UpdateMethod = [Kind = "Replace"], TypeSettings = [Kind = "Table"]]]}]
+shared #"Population by School Attendance" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "r_un_attendance", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"table_code", "record_type_code", "record_type", "reliability_code", "reliability", "column_19", "reference_date", "area_code", "sex_code", "code_of_age", "code_of_school_attendance", "source_year"}),
+  #"Filtered rows" = Table.SelectRows(#"Removed columns", each ([area] = "Total") and ([sex] = "Both Sexes")),
+  #"Removed columns 1" = Table.RemoveColumns(#"Filtered rows", {"area", "sex"}),
+  #"Filtered rows 1" = Table.SelectRows(#"Removed columns 1", each ([age] = "10" or [age] = "11" or [age] = "12" or [age] = "13" or [age] = "14" or [age] = "15" or [age] = "16" or [age] = "17" or [age] = "18" or [age] = "19" or [age] = "20" or [age] = "21" or [age] = "22" or [age] = "23" or [age] = "24" or [age] = "5" or [age] = "6" or [age] = "7" or [age] = "8" or [age] = "9")),
+  #"Pivoted column 1" = Table.Pivot(Table.TransformColumnTypes(#"Filtered rows 1", {{"age", type text}}), List.Distinct(Table.TransformColumnTypes(#"Filtered rows 1", {{"age", type text}})[age]), "age", "value"),
+  #"Replaced value" = Table.ReplaceValue(#"Pivoted column 1", null, "0", Replacer.ReplaceValue, {"20", "6", "11", "12", "22", "8", "18", "24", "5", "9", "10", "13", "14", "21", "16", "7", "15", "19", "23", "17"}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Replaced value", {{"17", Int64.Type}, {"23", Int64.Type}, {"19", Int64.Type}, {"15", Int64.Type}, {"7", Int64.Type}, {"16", Int64.Type}, {"21", Int64.Type}, {"14", Int64.Type}, {"13", Int64.Type}, {"10", Int64.Type}, {"9", Int64.Type}, {"5", Int64.Type}, {"24", Int64.Type}, {"18", Int64.Type}, {"8", Int64.Type}, {"22", Int64.Type}, {"12", Int64.Type}, {"11", Int64.Type}, {"6", Int64.Type}, {"20", Int64.Type}}),
+  #"Added custom" = Table.TransformColumnTypes(Table.AddColumn(#"Changed column type", "Value", each [20]+[6]+[11]+[12]+[22]+[8]+[18]+[24]+[5]+[9]+[10]+[13]+[14]+[21]+[16]+[7]+[15]+[19]+[23]+[17]), {{"Value", Int64.Type}}),
+  #"Removed columns 2" = Table.RemoveColumns(#"Added custom", {"17", "23", "19", "15", "7", "16", "21", "14", "13", "10", "9", "5", "24", "18", "8", "22", "12", "11", "6", "20"}),
+  #"Pivoted column" = Table.Pivot(Table.TransformColumnTypes(#"Removed columns 2", {{"school_attendance", type text}}), List.Distinct(Table.TransformColumnTypes(#"Removed columns 2", {{"school_attendance", type text}})[school_attendance]), "school_attendance", "Value"),
+  #"Replaced value 1" = Table.ReplaceValue(#"Pivoted column", null, 0, Replacer.ReplaceValue, {"Not attending school"}),
+  #"Added custom 1" = Table.TransformColumnTypes(Table.AddColumn(#"Replaced value 1", "Value", each ([Not attending school])/[Total]), {{"Value", Percentage.Type}}),
+  #"Removed columns 3" = Table.RemoveColumns(#"Added custom 1", {"Attending school", "Not attending school", "Not stated", "Total"}),
+  #"Renamed columns" = Table.RenameColumns(#"Removed columns 3", {{"Value", "Not attending school"}}),
+  #"Merged queries" = Table.NestedJoin(#"Renamed columns", {"country_or_area_code"}, #"countries csv", {"ref_area"}, "countries csv", JoinKind.LeftOuter),
+  #"Expanded countries csv" = Table.ExpandTableColumn(#"Merged queries", "countries csv", {"country_code", "country_name"}, {"country_code", "country_name"}),
+  #"Filtered rows 2" = Table.SelectRows(#"Expanded countries csv", each ([country_name] <> null)),
+  #"Removed columns 4" = Table.RemoveColumns(#"Filtered rows 2", {"country_or_area", "country_name", "country_or_area_code"}),
+  #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 4", {{"year", "Year"}})
+in
+  #"Renamed columns 1";
+[BindToDefaultDestination = true]
+shared #"Population with food insecurity" = let
+  Source = Lakehouse.Contents(null),
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
+  #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_food", ItemKind = "Table"]}[Data],
+  #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_3_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
+  #"Unpivoted columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Year", "Value"),
+  #"Divided column" = Table.TransformColumns(#"Unpivoted columns", {{"Value", each _ / 100, type number}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}}),
+  #"Merged queries" = Table.NestedJoin(#"Changed column type", {"REF_AREA"}, #"countries csv", {"country_code"}, "countries csv", JoinKind.LeftOuter),
+  #"Expanded countries csv" = Table.ExpandTableColumn(#"Merged queries", "countries csv", {"country_name"}, {"country_name"}),
+  #"Filtered rows" = Table.SelectRows(#"Expanded countries csv", each ([country_name] <> null)),
+  #"Removed columns 1" = Table.RemoveColumns(#"Filtered rows", {"REF_AREA_LABEL", "country_name"}),
+  #"Renamed columns" = Table.RenameColumns(#"Removed columns 1", {{"REF_AREA", "country_code"}})
+in
+  #"Renamed columns";
 [BindToDefaultDestination = true]
 shared #"Population in poverty" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_ratio", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "COMP_BREAKDOWN_3_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
   #"Unpivoted columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Year", "Value"),
@@ -165,8 +165,8 @@ in
 [BindToDefaultDestination = true]
 shared #"Population using safely managed sanitation services" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_sanitation", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "COMP_BREAKDOWN_3_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
   #"Unpivoted columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Year", "Value"),
@@ -183,8 +183,8 @@ in
 [BindToDefaultDestination = true]
 shared #"Population living in slums" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_slums", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "COMP_BREAKDOWN_3_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
   #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Year", "Value"),
@@ -200,8 +200,8 @@ in
   #"Renamed columns 1";
 shared #"countries csv" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "caea25e2-1b4f-4b81-913a-7fd6b66cce9e"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Files", ItemKind = "Folder"]}[Data],
   #"Navigation 3" = #"Navigation 2"{[Name = "countries.csv"]}[Content],
   #"Imported CSV" = Csv.Document(#"Navigation 3", [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
@@ -210,30 +210,25 @@ shared #"countries csv" = let
   #"Changed column type 1" = Table.TransformColumnTypes(#"Changed column type", {{"ref_area", type text}})
 in
   #"Changed column type 1";
+shared DefaultDestination = Lakehouse.Contents([EnableFolding = false]){[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data]{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data];
 shared #"Population by Illiteracy_DataDestination" = let
   Pattern = Lakehouse.Contents([HierarchicalNavigation = null, CreateNavigationProperties = false, EnableFolding = false]),
-  Navigation_1 = Pattern{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  Navigation_2 = Navigation_1{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation_1 = Pattern{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  Navigation_2 = Navigation_1{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   TableNavigation = Navigation_2{[Id = "Population by Illiteracy", ItemKind = "Table"]}?[Data]?
-in
-  TableNavigation;
-shared #"Population by Type of Living Quarters_DataDestination" = let
-  Pattern = Lakehouse.Contents([HierarchicalNavigation = null, CreateNavigationProperties = false, EnableFolding = false]),
-  Navigation_1 = Pattern{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  Navigation_2 = Navigation_1{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
-  TableNavigation = Navigation_2{[Id = "Population by Type of Living Quarters", ItemKind = "Table"]}?[Data]?
 in
   TableNavigation;
 shared #"Population by School Attendance_DataDestination" = let
   Pattern = Lakehouse.Contents([HierarchicalNavigation = null, CreateNavigationProperties = false, EnableFolding = false]),
-  Navigation_1 = Pattern{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  Navigation_2 = Navigation_1{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation_1 = Pattern{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  Navigation_2 = Navigation_1{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   TableNavigation = Navigation_2{[Id = "Population by School Attendance", ItemKind = "Table"]}?[Data]?
 in
   TableNavigation;
-shared DefaultDestination = let
-  Source = Lakehouse.Contents([HierarchicalNavigation = null, CreateNavigationProperties = false, EnableFolding = false]),
-  #"Navigation 1" = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 2" = #"Navigation 1"{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data]
+shared #"Population by Type of Living Quarters_DataDestination" = let
+  Pattern = Lakehouse.Contents([HierarchicalNavigation = null, CreateNavigationProperties = false, EnableFolding = false]),
+  Navigation_1 = Pattern{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  Navigation_2 = Navigation_1{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
+  TableNavigation = Navigation_2{[Id = "Population by Type of Living Quarters", ItemKind = "Table"]}?[Data]?
 in
-  #"Navigation 2";
+  TableNavigation;

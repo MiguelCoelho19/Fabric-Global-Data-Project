@@ -15,6 +15,11 @@
       "queryName": "Population by Type of Living Quarters",
       "loadEnabled": false
     },
+    "Food price inflation": {
+      "queryId": "abda2287-e617-480d-9d5c-27be1a8b3726",
+      "queryName": "Food price inflation",
+      "loadEnabled": false
+    },
     "Population by School Attendance": {
       "queryId": "d4d2f9e2-5234-489a-9608-a97afe368090",
       "queryName": "Population by School Attendance",
@@ -23,11 +28,6 @@
     "Population with food insecurity": {
       "queryId": "0f76bd78-9343-43fe-a21a-27e9fe1a71bc",
       "queryName": "Population with food insecurity",
-      "loadEnabled": false
-    },
-    "Food price inflation": {
-      "queryId": "abda2287-e617-480d-9d5c-27be1a8b3726",
-      "queryName": "Food price inflation",
       "loadEnabled": false
     },
     "Population in poverty": {
@@ -49,27 +49,27 @@
       "queryId": "acf09403-8200-40c3-aed0-e773d7897cfe",
       "queryName": "countries csv"
     },
+    "DefaultDestination": {
+      "queryId": "2e479aa9-9164-49e7-b787-45f03df57db2",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
     "Population by Illiteracy_DataDestination": {
-      "queryId": "507ce84a-88a5-4396-b0de-177210f9e0f7",
+      "queryId": "d0bba111-b4d3-4535-b59e-8e2e1ca3d989",
       "queryName": "Population by Illiteracy_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
-    "Population by Type of Living Quarters_DataDestination": {
-      "queryId": "862494eb-814b-47c1-b164-c31581f27bb6",
-      "queryName": "Population by Type of Living Quarters_DataDestination",
-      "isHidden": true,
-      "loadEnabled": false
-    },
     "Population by School Attendance_DataDestination": {
-      "queryId": "abe1e864-f02f-47f0-ba87-1d912a0f3626",
+      "queryId": "564a5292-fc83-4847-9709-b3a2c8bf24c3",
       "queryName": "Population by School Attendance_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     },
-    "DefaultDestination": {
-      "queryId": "be7a69e0-e7b8-44d7-9246-733c3be023df",
-      "queryName": "DefaultDestination",
+    "Population by Type of Living Quarters_DataDestination": {
+      "queryId": "33f1ab9a-1491-40d6-ac72-e0bc2d1c3bf4",
+      "queryName": "Population by Type of Living Quarters_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     }
@@ -78,7 +78,7 @@
     {
       "path": "Lakehouse",
       "kind": "Lakehouse",
-      "connectionId": "{\"ClusterId\":\"2bf3a0af-3091-4696-a883-e76d8f3dbf69\",\"DatasourceId\":\"65183c0a-9b97-48ea-8b4f-53f64f738a86\"}"
+      "connectionId": "{\"ClusterId\":\"afdcf0e0-9f10-4b55-b233-c2e1d86a634f\",\"DatasourceId\":\"2575bdca-b252-4ffa-9c05-51bf06d55504\"}"
     }
   ]
 }
