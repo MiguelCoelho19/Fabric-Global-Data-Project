@@ -108,7 +108,7 @@
 # - P&D para quem? O gasto em Research and Development está correlacionado apenas com o aumento do GNI, ou ele também ajuda a melhorar indicadores de Energia Sustentável?
 # 
 # **Bloco C:** A Entrega Final (O Resultado)
-# - Crescimento vs. Desenvolvimento: Países que aumentaram o GNI per capita conseguiram necessariamente melhorar o acesso a Energia Sustentável e Saneamento?
+# - Crescimento vs. Desenvolvimento: Países que aumentaram o GNI per capita conseguiram necessariamente melhorar o acesso a Energia Sustentável?
 # 
 # - O veredito da longevidade: Qual fator do "Problema" (Fome, Saneamento ou Pobreza) é o preditor mais forte para uma baixa Expectativa de Vida?
 # 
@@ -373,6 +373,8 @@
 # - Dificuldade na distribuição de tarefas devido a limitações do Fabric e a linearidade do projeto
 # - Inconsistencia de alguns dados da UN, principalmente a sobreposição de dados referentes as idades
 # - Dificuldade de conexão de internet
+# - Perda de contas Microsoft 
+# - Inundação na ITUp
 
 # MARKDOWN ********************
 

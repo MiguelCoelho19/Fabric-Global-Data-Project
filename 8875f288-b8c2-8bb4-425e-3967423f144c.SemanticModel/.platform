@@ -1,11 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Report",
-    "displayName": "Global Data Report"
+    "type": "SemanticModel",
+    "displayName": "SM_Gold"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "5c738bc4-e7d3-97af-43dd-ffb096464ec5"
+    "logicalId": "8875f288-b8c2-8bb4-425e-3967423f144c"
   }
 }

@@ -1,16 +1,13 @@
 table 'Dimention Year'
-	lineageTag: ba644773-c51c-4266-9b6a-22d73e41e207
+	lineageTag: cf504f09-f3c3-4b51-963c-2b8517852289
 	sourceLineageTag: [dbo].[Dimention Year]
 
 	column Year
 		dataType: string
-		sourceProviderType: varchar(8000)
-		lineageTag: 47d93fa1-e051-4de9-b0bd-7135d384fb91
+		lineageTag: 1ddc6e7f-9263-4671-ab7f-fa91814d5d8c
 		sourceLineageTag: Year
 		summarizeBy: none
 		sourceColumn: Year
-
-		changedProperty = SummarizeBy
 
 		annotation SummarizationSetBy = Automatic
 
@@ -19,7 +16,5 @@ table 'Dimention Year'
 		source
 			entityName: Dimention Year
 			schemaName: dbo
-			expressionSource: DatabaseQuery
-
-	annotation PBI_ResultType = Table
+			expressionSource: 'DirectLake - LH_Gold'
 

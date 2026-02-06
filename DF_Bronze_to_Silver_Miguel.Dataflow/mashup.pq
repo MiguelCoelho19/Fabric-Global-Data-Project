@@ -125,9 +125,10 @@ shared #"Population by School Attendance" = let
   #"Expanded countries csv" = Table.ExpandTableColumn(#"Merged queries", "countries csv", {"country_code", "country_name"}, {"country_code", "country_name"}),
   #"Filtered rows 2" = Table.SelectRows(#"Expanded countries csv", each ([country_name] <> null)),
   #"Removed columns 4" = Table.RemoveColumns(#"Filtered rows 2", {"country_or_area", "country_name", "country_or_area_code"}),
-  #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 4", {{"year", "Year"}})
+  #"Renamed columns 1" = Table.RenameColumns(#"Removed columns 4", {{"year", "Year"}}),
+  #"Filtered rows 3" = Table.SelectRows(#"Renamed columns 1", each ([Not attending school] <> 1.99374870070658))
 in
-  #"Renamed columns 1";
+  #"Filtered rows 3";
 [BindToDefaultDestination = true]
 shared #"Population with food insecurity" = let
   Source = Lakehouse.Contents(null),
@@ -135,8 +136,8 @@ shared #"Population with food insecurity" = let
   #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_food", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_3_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
-  #"Unpivoted columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Year", "Value"),
-  #"Divided column" = Table.TransformColumns(#"Unpivoted columns", {{"Value", each _ / 100, type number}}),
+  #"Renamed columns 1" = Table.RenameColumns(#"Removed columns", {{"TIME_PERIOD", "Year"}, {"OBS_VALUE", "Value"}}),
+  #"Divided column" = Table.TransformColumns(#"Renamed columns 1", {{"Value", each _ / 100, type number}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}}),
   #"Merged queries" = Table.NestedJoin(#"Changed column type", {"REF_AREA"}, #"countries csv", {"country_code"}, "countries csv", JoinKind.LeftOuter),
   #"Expanded countries csv" = Table.ExpandTableColumn(#"Merged queries", "countries csv", {"country_name"}, {"country_name"}),
@@ -152,8 +153,8 @@ shared #"Population in poverty" = let
   #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_ratio", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "COMP_BREAKDOWN_3_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
-  #"Unpivoted columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Year", "Value"),
-  #"Divided column" = Table.TransformColumns(#"Unpivoted columns", {{"Value", each _ / 100, type number}}),
+  #"Renamed columns 1" = Table.RenameColumns(#"Removed columns", {{"TIME_PERIOD", "Year"}, {"OBS_VALUE", "Value"}}),
+  #"Divided column" = Table.TransformColumns(#"Renamed columns 1", {{"Value", each _ / 100, type number}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}}),
   #"Merged queries" = Table.NestedJoin(#"Changed column type", {"REF_AREA"}, #"countries csv", {"country_code"}, "countries csv", JoinKind.LeftOuter),
   #"Expanded countries csv" = Table.ExpandTableColumn(#"Merged queries", "countries csv", {"country_name"}, {"country_name"}),
@@ -187,8 +188,8 @@ shared #"Population living in slums" = let
   #"Navigation 1" = Navigation{[lakehouseId = "91c1f691-8f6a-4cd4-96e7-adb18f7e60a1"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "p_wb_slums", ItemKind = "Table"]}[Data],
   #"Removed columns" = Table.RemoveColumns(#"Navigation 2", {"STRUCTURE", "STRUCTURE_ID", "ACTION", "FREQ", "INDICATOR", "SEX", "AGE", "URBANISATION", "UNIT_MEASURE", "COMP_BREAKDOWN_1", "COMP_BREAKDOWN_2", "COMP_BREAKDOWN_3", "AGG_METHOD", "UNIT_TYPE", "DECIMALS", "DATABASE_ID", "TIME_FORMAT", "COMMENT_TS", "UNIT_MULT", "DATA_SOURCE", "OBS_CONF", "OBS_STATUS", "FREQ_LABEL", "INDICATOR_LABEL", "SEX_LABEL", "AGE_LABEL", "URBANISATION_LABEL", "UNIT_MEASURE_LABEL", "COMP_BREAKDOWN_1_LABEL", "COMP_BREAKDOWN_2_LABEL", "COMP_BREAKDOWN_3_LABEL", "AGG_METHOD_LABEL", "UNIT_TYPE_LABEL", "DECIMALS_LABEL", "DATABASE_ID_LABEL", "TIME_FORMAT_LABEL", "UNIT_MULT_LABEL", "OBS_STATUS_LABEL", "OBS_CONF_LABEL"}),
-  #"Unpivoted other columns" = Table.UnpivotOtherColumns(#"Removed columns", {"REF_AREA", "REF_AREA_LABEL"}, "Year", "Value"),
-  #"Divided column" = Table.TransformColumns(#"Unpivoted other columns", {{"Value", each _ / 100, type number}}),
+  #"Renamed columns 2" = Table.RenameColumns(#"Removed columns", {{"TIME_PERIOD", "Year"}, {"OBS_VALUE", "Value"}}),
+  #"Divided column" = Table.TransformColumns(#"Renamed columns 2", {{"Value", each _ / 100, type number}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Divided column", {{"Value", Percentage.Type}}),
   #"Merged queries" = Table.NestedJoin(#"Changed column type", {"REF_AREA"}, #"countries csv", {"country_code"}, "countries csv", JoinKind.LeftOuter),
   #"Expanded countries csv" = Table.ExpandTableColumn(#"Merged queries", "countries csv", {"country_name"}, {"country_name"}),

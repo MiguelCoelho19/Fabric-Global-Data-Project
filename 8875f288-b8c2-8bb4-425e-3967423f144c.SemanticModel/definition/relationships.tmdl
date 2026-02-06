@@ -1,0 +1,8 @@
+relationship 74102fd7-f229-bb33-12a6-527466088d0e
+	fromColumn: 'Fact Country Data'.Country
+	toColumn: 'Dimention Countries'.Country_Code
+
+relationship 82b70b15-8d59-dc4f-62fd-c5285ba213c3
+	fromColumn: 'Fact Country Data'.Year
+	toColumn: 'Dimention Year'.Year
+

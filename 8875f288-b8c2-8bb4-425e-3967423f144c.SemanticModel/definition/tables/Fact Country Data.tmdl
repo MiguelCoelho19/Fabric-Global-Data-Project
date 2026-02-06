@@ -1,0 +1,563 @@
+table 'Fact Country Data'
+	lineageTag: 2a3d9dd4-1166-473f-9d8b-8dcf518fae93
+	sourceLineageTag: [dbo].[Fact Country Data]
+
+	measure FilteredA3 = ```
+			
+			VAR Slums = AVERAGE('Fact Country Data'[Population living in slums])
+			VAR Illiterate = AVERAGE('Fact Country Data'[Illiterate Population])
+			RETURN
+			IF(
+			    NOT(ISBLANK(Slums)) &&
+			    NOT(ISBLANK(Illiterate)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 4cd7632e-20e1-4885-a318-2190e4f788e9
+
+		changedProperty = Name
+
+	measure FilteredA1 = ```
+			
+			VAR inflation = AVERAGE('Fact Country Data'[Food price inflation])
+			VAR insecurity = AVERAGE('Fact Country Data'[Population with food insecurity])
+			VAR poverty = AVERAGE('Fact Country Data'[Population in poverty])
+			RETURN
+			IF(
+			    NOT(ISBLANK(inflation)) &&
+			    NOT(ISBLANK(insecurity)) &&
+			    NOT(ISBLANK(poverty)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 76e2fd90-6414-4185-a05a-12d1b45f8021
+
+		changedProperty = Name
+
+	measure MaxMinSlums = ```
+			
+			VAR CountryTable = 
+			    FILTER(
+			        ADDCOLUMNS(
+			            ALLSELECTED('Dimention Countries'[Country_Name], 'Dimention Countries'[Country_Code]),
+			            "@SumAB", CALCULATE(SUM('Fact Country Data'[Population living in slums]) + SUM('Fact Country Data'[Population that are Roofless])),
+			            "@ValC", CALCULATE(SUM('Fact Country Data'[Population using safely managed sanitation services])),
+			            "@HasBlank", 
+			                ISBLANK(CALCULATE(SUM('Fact Country Data'[Population living in slums]))) || 
+			                ISBLANK(CALCULATE(SUM('Fact Country Data'[Population that are Roofless]))) || 
+			                ISBLANK(CALCULATE(SUM('Fact Country Data'[Population using safely managed sanitation services])))
+			        ),
+			        [@HasBlank] = FALSE()
+			    )
+			
+			-- Rank all valid countries: Highest Priority 1, then 2, then 3
+			VAR RankedTable = 
+			    ADDCOLUMNS(
+			        CountryTable,
+			        "@RankAsc", 
+			            RANKX(
+			                CountryTable, 
+			                [@SumAB] + ([@ValC] / 1000000), , ASC, Dense
+			            ),
+			        "@RankDesc",
+			            RANKX(
+			                CountryTable, 
+			                [@SumAB] + ([@ValC] / 1000000), , DESC, Dense
+			            )
+			    )
+			
+			-- Identify the absolute Top and Bottom IDs based on the tie-breakers
+			-- We use MINX/MAXX on Country_Code to break the final string tie
+			VAR TopRank = MINX(FILTER(RankedTable, [@RankDesc] = 1), 'Dimention Countries'[Country_Code])
+			VAR BottomRank = MINX(FILTER(RankedTable, [@RankAsc] = 1), 'Dimention Countries'[Country_Code])
+			
+			VAR CurrentID = SELECTEDVALUE('Dimention Countries'[Country_Code])
+			
+			RETURN
+			IF(CurrentID = TopRank || CurrentID = BottomRank, 1, 0)
+			```
+		formatString: 0
+		lineageTag: 16b84bb3-793d-4801-9869-81c546ef3b51
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+	measure FilteredA2 = ```
+			
+			VAR Roofless = AVERAGE('Fact Country Data'[Population that are Roofless])
+			VAR slums = AVERAGE('Fact Country Data'[Population living in slums])
+			VAR sanitation = AVERAGE('Fact Country Data'[Population using safely managed sanitation services])
+			RETURN
+			IF(
+			    NOT(ISBLANK(Roofless)) &&
+			    NOT(ISBLANK(slums)) &&
+			    NOT(ISBLANK(sanitation)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 596812ba-0a42-40d0-8cab-af9b2e65f281
+
+		changedProperty = Name
+
+	measure FilteredB2 = ```
+			
+			VAR attending = AVERAGE('Fact Country Data'[Population Not attending school])
+			VAR Illiterate = AVERAGE('Fact Country Data'[Illiterate Population])
+			VAR Spending = AVERAGE('Fact Country Data'[Public Education Spending])
+			RETURN
+			IF(
+			    NOT(ISBLANK(attending)) &&
+			    NOT(ISBLANK(Illiterate))&&
+			    NOT(ISBLANK(Spending)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: b846093d-e2eb-4840-9996-bf6d57fa212e
+
+		changedProperty = Name
+
+	measure FilteredB1 = ```
+			
+			VAR Expectancy = AVERAGE('Fact Country Data'[Life Expectancy After Birth])
+			VAR Health = AVERAGE('Fact Country Data'[Public Health Spending])
+			VAR Social = AVERAGE('Fact Country Data'[GDP Social Protection Spending])
+			RETURN
+			IF(
+			    NOT(ISBLANK(Expectancy)) &&(
+			    NOT(ISBLANK(Health)) ||
+			    NOT(ISBLANK(Social))), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: c55798ab-ec0b-450e-bada-be4a8e480211
+
+		changedProperty = Name
+
+	measure 'FilteredB1.2' = ```
+			
+			VAR Expectancy = AVERAGE('Fact Country Data'[Life Expectancy After Birth])
+			VAR Social = AVERAGE('Fact Country Data'[GDP Social Protection Spending])
+			RETURN
+			IF(
+			    NOT(ISBLANK(Expectancy)) &&
+			    NOT(ISBLANK(Social)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 71091791-fcbc-494d-841a-b957ae866226
+
+		changedProperty = Name
+
+	measure FilteredB3 = ```
+			
+			VAR Research = AVERAGE('Fact Country Data'[Research and Development Spending])
+			VAR GNI = AVERAGE('Fact Country Data'[GNI per capita])
+			VAR Energy = AVERAGE('Fact Country Data'[Renewable Energy Score])
+			RETURN
+			IF(
+			    NOT(ISBLANK(Research)) &&
+			    NOT(ISBLANK(GNI))&&
+			    NOT(ISBLANK(Energy)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 87b11582-26a2-44e6-8481-dd701cb611d8
+
+		changedProperty = Name
+
+	measure FilteredC1 = ```
+			
+			VAR GNI = AVERAGE('Fact Country Data'[GNI per capita])
+			VAR Energy = AVERAGE('Fact Country Data'[Renewable Energy Score])
+			RETURN
+			IF(
+			    NOT(ISBLANK(GNI))&&
+			    NOT(ISBLANK(Energy)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 386585cb-a279-4680-9729-49619a884583
+
+		changedProperty = Name
+
+	measure FilteredC2 = ```
+			
+			VAR food = AVERAGE('Fact Country Data'[Population with food insecurity])
+			VAR sanitation = AVERAGE('Fact Country Data'[Population using safely managed sanitation services])
+			VAR poverty = AVERAGE('Fact Country Data'[Population in poverty])
+			VAR Expectancy = AVERAGE('Fact Country Data'[Life Expectancy After Birth])
+			RETURN
+			IF(
+			    NOT(ISBLANK(food)) &&
+			    NOT(ISBLANK(sanitation))&&
+			    NOT(ISBLANK(poverty))&&
+			    NOT(ISBLANK(Expectancy)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: 3b12f041-3170-4be9-add0-816a1d9eeb30
+
+		changedProperty = Name
+
+	measure FilteredC3 = ```
+			
+			VAR GNI = AVERAGE('Fact Country Data'[GNI per capita])
+			VAR Energy = AVERAGE('Fact Country Data'[Renewable Energy Score])
+			RETURN
+			IF(
+			    NOT(ISBLANK(GNI))&&
+			    NOT(ISBLANK(Energy)), 
+			    1, 
+			    0
+			)
+			```
+		formatString: 0
+		lineageTag: f5c069fd-9095-4f23-86e5-6f8cc71dedd3
+
+		changedProperty = Name
+
+	measure 'Energy of GNI Above Average' = ```
+			
+			VAR OverallAverage = 
+			    CALCULATE(
+			        AVERAGE('Fact Country Data'[GNI per capita]), 
+			        ALLSELECTED('Fact Country Data')
+			    )
+			RETURN
+			    CALCULATE(
+			        AVERAGE('Fact Country Data'[Renewable Energy Score]),
+			        KEEPFILTERS('Fact Country Data'[GNI per capita] > OverallAverage)
+			    )
+			```
+		lineageTag: 6ae3c2c0-348c-4917-9b37-d2252330c4b5
+
+		changedProperty = Name
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Energy of GNI Below Average' = ```
+			
+			VAR OverallAverage = 
+			    CALCULATE(
+			        AVERAGE('Fact Country Data'[GNI per capita]), 
+			        ALLSELECTED('Fact Country Data')
+			    )
+			RETURN
+			    CALCULATE(
+			        AVERAGE('Fact Country Data'[Renewable Energy Score]),
+			        KEEPFILTERS('Fact Country Data'[GNI per capita] <= OverallAverage)
+			    )
+			```
+		lineageTag: eed2bd2b-2281-4728-a521-54b4e6cc9493
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Measure
+		lineageTag: 7c0ee2b8-9b49-46c2-945d-1c57d5828e31
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	column Country
+		dataType: string
+		lineageTag: 06faedf5-f7fe-4332-9d5b-a91bb417382a
+		sourceLineageTag: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: string
+		lineageTag: 99b40884-19b3-4344-9740-e7d8de3ad007
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Food price inflation'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c38aa493-6408-4841-9fd2-2d927cbfa42f
+		sourceLineageTag: Food price inflation
+		summarizeBy: average
+		sourceColumn: Food price inflation
+
+		changedProperty = FormatString
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+	column 'GDP Social Protection Spending'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6999c5f1-b3dd-4c68-b27d-929a3314d490
+		sourceLineageTag: GDP Social Protection Spending
+		summarizeBy: average
+		sourceColumn: GDP Social Protection Spending
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'GNI per capita'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 260cb5ee-cf2f-4122-ab44-727f4fdc89d1
+		sourceLineageTag: GNI per capita
+		summarizeBy: average
+		sourceColumn: GNI per capita
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Life Expectancy After Birth'
+		dataType: double
+		lineageTag: 4195b183-da77-4944-8e9b-6c5b66698a66
+		sourceLineageTag: Life Expectancy After Birth
+		summarizeBy: average
+		sourceColumn: Life Expectancy After Birth
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Illiterate Population'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: deaff24b-45c9-4839-8e7a-6504448168c7
+		sourceLineageTag: Illiterate Population
+		summarizeBy: average
+		sourceColumn: Illiterate Population
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population Not attending school'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e92922f7-5d1c-4f4a-ba7d-f6a29c130a4a
+		sourceLineageTag: Population Not attending school
+		summarizeBy: average
+		sourceColumn: Population Not attending school
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population living in Housing units'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fc3b5ab6-1045-413e-97ec-b3159edeb0a6
+		sourceLineageTag: Population living in Housing units
+		summarizeBy: average
+		sourceColumn: Population living in Housing units
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population living in Collective living quarters'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5c4a2d9c-5394-49f2-a5fe-6667f87c13cc
+		sourceLineageTag: Population living in Collective living quarters
+		summarizeBy: average
+		sourceColumn: Population living in Collective living quarters
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population that are Roofless'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3f846e8d-f3cf-4512-a45c-afe462b36143
+		sourceLineageTag: Population that are Roofless
+		summarizeBy: average
+		sourceColumn: Population that are Roofless
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population with Unknown housing'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: f570226e-fb56-4907-af55-1a67ae6550a4
+		sourceLineageTag: Population with Unknown housing
+		summarizeBy: average
+		sourceColumn: Population with Unknown housing
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population in poverty'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0ee440d5-18f5-4763-b9c7-92dad3135cd8
+		sourceLineageTag: Population in poverty
+		summarizeBy: average
+		sourceColumn: Population in poverty
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population living in slums'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5c92ae57-254d-4c99-ae09-c8ad145282a4
+		sourceLineageTag: Population living in slums
+		summarizeBy: average
+		sourceColumn: Population living in slums
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population using safely managed sanitation services'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9f2a14c8-04f7-4b87-8d40-d174fdcf8645
+		sourceLineageTag: Population using safely managed sanitation services
+		summarizeBy: average
+		sourceColumn: Population using safely managed sanitation services
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Population with food insecurity'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9a19f407-f0aa-443d-81d8-b0597a65ddb0
+		sourceLineageTag: Population with food insecurity
+		summarizeBy: average
+		sourceColumn: Population with food insecurity
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	column 'Public Education Spending'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 30294266-6db1-4350-a3fc-ba1910c8e0e2
+		sourceLineageTag: Public Education Spending
+		summarizeBy: average
+		sourceColumn: Public Education Spending
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Public Health Spending'
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: d189e2aa-eff4-4a4e-af21-112bcc49cc99
+		sourceLineageTag: Public Health Spending
+		summarizeBy: average
+		sourceColumn: Public Health Spending
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column 'Renewable Energy Score'
+		dataType: double
+		lineageTag: c713bfc5-6d0d-4a43-bf07-4b19a16cfcb3
+		sourceLineageTag: Renewable Energy Score
+		summarizeBy: average
+		sourceColumn: Renewable Energy Score
+
+		changedProperty = SummarizeBy
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Research and Development Spending'
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 57ed5be7-d9bd-4978-ac18-f1c5341d0c62
+		sourceLineageTag: Research and Development Spending
+		summarizeBy: average
+		sourceColumn: Research and Development Spending
+
+		changedProperty = SummarizeBy
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	partition 'Fact Country Data' = entity
+		mode: directLake
+		source
+			entityName: Fact Country Data
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_Gold'
+

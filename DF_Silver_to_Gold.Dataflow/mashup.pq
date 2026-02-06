@@ -3,15 +3,15 @@ section Section1;
 [BindToDefaultDestination = true]
 shared #"Dimention Countries" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Countries", ItemKind = "Table"]}[Data]
 in
   #"Navigation 2";
 shared #"Food price inflation" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Food price inflation", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "Food price inflation"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Food price inflation", Percentage.Type}}),
@@ -20,8 +20,8 @@ in
   #"Inserted Merged Column";
 shared #"GDP Social Protection Spending" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "GDP Social Protection Spending", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "GDP Social Protection Spending"}, {"Ref_Area", "country_code"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"GDP Social Protection Spending", Percentage.Type}, {"Year", type text}}),
@@ -30,8 +30,8 @@ in
   #"Inserted Merged Column";
 shared #"GNI per capita" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "GNI per capita", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "GNI per capita"}, {"Ref_Area", "country_code"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"GNI per capita", Currency.Type}, {"Year", type text}}),
@@ -40,8 +40,8 @@ in
   #"Inserted Merged Column";
 shared #"Life Expectancy After Birth" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Life Expectancy After Birth", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "Life Expectancy After Birth"}, {"Ref_Area", "country_code"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Year", type text}}),
@@ -50,8 +50,8 @@ in
   #"Inserted Merged Column";
 shared #"Population by Illiteracy" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Population by Illiteracy", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "Illiterate Population"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Illiterate Population", Percentage.Type}}),
@@ -60,8 +60,8 @@ in
   #"Inserted Merged Column";
 shared #"Population by School Attendance" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Population by School Attendance", ItemKind = "Table"]}[Data],
   #"Changed column type" = Table.TransformColumnTypes(#"Navigation 2", {{"Not attending school", Percentage.Type}}),
   #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Not attending school", "Population Not attending school"}}),
@@ -70,8 +70,8 @@ in
   #"Inserted Merged Column";
 shared #"Population by Type of Living Quarters" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Population by Type of Living Quarters", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Housing units", "Population living in Housing units"}, {"Collective living quarters", "Population living in Collective living quarters"}, {"Roofless", "Population that are Roofless"}, {"Unknown", "Population with Unknown housing"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Population living in Housing units", Percentage.Type}, {"Population living in Collective living quarters", Percentage.Type}, {"Population that are Roofless", Percentage.Type}, {"Population with Unknown housing", Percentage.Type}}),
@@ -80,28 +80,28 @@ in
   #"Inserted Merged Column";
 shared #"Population in poverty" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Population in poverty", ItemKind = "Table"]}[Data],
-  #"Changed column type" = Table.TransformColumnTypes(#"Navigation 2", {{"Value", Percentage.Type}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Navigation 2", {{"Value", Percentage.Type}, {"Year", type text}}),
   #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Value", "Population in poverty"}}),
   #"Inserted Merged Column" = Table.AddColumn(#"Renamed columns", "Id", each Text.Combine({[country_code], ",", [Year]}), type text)
 in
   #"Inserted Merged Column";
 shared #"Population living in slums" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Population living in slums", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "Population living in slums"}}),
-  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Population living in slums", Percentage.Type}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Population living in slums", Percentage.Type}, {"Year", type text}}),
   #"Inserted Merged Column" = Table.AddColumn(#"Changed column type", "Id", each Text.Combine({[country_code], ",", [Year]}), type text)
 in
   #"Inserted Merged Column";
 shared #"Population using safely managed sanitation services" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Population using safely managed sanitation services", ItemKind = "Table"]}[Data],
   #"Changed column type" = Table.TransformColumnTypes(#"Navigation 2", {{"Value", Percentage.Type}}),
   #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Value", "Population using safely managed sanitation services"}}),
@@ -110,18 +110,18 @@ in
   #"Inserted Merged Column";
 shared #"Population with food insecurity" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Population with food insecurity", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "Population with food insecurity"}}),
-  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Population with food insecurity", Percentage.Type}}),
+  #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Population with food insecurity", Percentage.Type}, {"Year", type text}}),
   #"Inserted Merged Column" = Table.AddColumn(#"Changed column type", "Id", each Text.Combine({[country_code], ",", [Year]}), type text)
 in
   #"Inserted Merged Column";
 shared #"Public Education Spending" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Public Education Spending", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "Public Education Spending"}, {"Ref_Area", "country_code"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Public Education Spending", Currency.Type}, {"Year", type text}}),
@@ -130,8 +130,8 @@ in
   #"Inserted Merged Column";
 shared #"Public Health Spending" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Public Health Spending", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "Public Health Spending"}, {"Ref_Area", "country_code"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Public Health Spending", Currency.Type}, {"Year", type text}}),
@@ -140,8 +140,8 @@ in
   #"Inserted Merged Column";
 shared #"Renewable Energy Score" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Renewable Energy Score", ItemKind = "Table"]}[Data],
   #"Renamed columns" = Table.RenameColumns(#"Navigation 2", {{"Value", "Renewable Energy Score"}, {"Ref_Area", "country_code"}}),
   #"Changed column type" = Table.TransformColumnTypes(#"Renamed columns", {{"Year", type text}}),
@@ -150,8 +150,8 @@ in
   #"Inserted Merged Column";
 shared #"Research and Development Spending" = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "40bd4a39-6798-4210-8e2f-e09024560926"]}[Data],
+  Navigation = Source{[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = "49958665-f44c-42aa-aeb9-9a260ada0e2f"]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "Research and Development Spending", ItemKind = "Table"]}[Data],
   #"Changed column type" = Table.TransformColumnTypes(#"Navigation 2", {{"Value", Currency.Type}, {"Year", type text}}),
   #"Renamed columns" = Table.RenameColumns(#"Changed column type", {{"Value", "Research and Development Spending"}, {"Ref_Area", "country_code"}}),
@@ -226,7 +226,6 @@ shared #"Fact Country Data" = let
   #"Changed column type 1" = Table.TransformColumnTypes(#"Removed columns 14", {{"Year", type text}})
 in
   #"Changed column type 1";
-shared DefaultDestination = Lakehouse.Contents([EnableFolding = false]){[workspaceId = "dff63297-ff0e-4927-8e91-bc223e951376"]}[Data]{[lakehouseId = "c94bf87a-9471-4610-9706-026accea4424"]}[Data];
 [BindToDefaultDestination = true]
 shared #"Dimention Year" = let
   Source = Table.Combine({#"Food price inflation", #"GNI per capita"}),
@@ -263,3 +262,4 @@ shared #"Dimention Year" = let
   #"Sorted rows" = Table.Sort(#"Renamed columns", {{"Year", Order.Ascending}})
 in
   #"Sorted rows";
+shared DefaultDestination = Lakehouse.Contents([EnableFolding = false]){[workspaceId = "336a3dcc-c24a-497c-8a80-a8fefb6face9"]}[Data]{[lakehouseId = "a9671e14-5d78-4e98-951b-781ae146ed94"]}[Data];

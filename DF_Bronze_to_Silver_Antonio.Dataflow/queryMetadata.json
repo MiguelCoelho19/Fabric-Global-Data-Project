@@ -45,15 +45,15 @@
       "queryName": "Countries",
       "loadEnabled": false
     },
-    "Countries_DataDestination": {
-      "queryId": "8ec630b9-504d-4cc3-b1b7-b13abb5407d2",
-      "queryName": "Countries_DataDestination",
+    "DefaultDestination": {
+      "queryId": "6bb2894f-3f71-4ccb-be04-1aed0a7b28b8",
+      "queryName": "DefaultDestination",
       "isHidden": true,
       "loadEnabled": false
     },
-    "DefaultDestination": {
-      "queryId": "8c1f9d93-d7ba-4a23-a19f-c203fdbb8807",
-      "queryName": "DefaultDestination",
+    "Countries_DataDestination": {
+      "queryId": "23388b6d-3fc1-4bd5-8f10-2bd7f8178345",
+      "queryName": "Countries_DataDestination",
       "isHidden": true,
       "loadEnabled": false
     }
@@ -62,7 +62,7 @@
     {
       "path": "Lakehouse",
       "kind": "Lakehouse",
-      "connectionId": "{\"ClusterId\":\"2bf3a0af-3091-4696-a883-e76d8f3dbf69\",\"DatasourceId\":\"03ecf776-2f67-4631-9df7-db6fd140711f\"}"
+      "connectionId": "{\"ClusterId\":\"afdcf0e0-9f10-4b55-b233-c2e1d86a634f\",\"DatasourceId\":\"2575bdca-b252-4ffa-9c05-51bf06d55504\"}"
     }
   ]
 }
